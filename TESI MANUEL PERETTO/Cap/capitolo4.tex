@@ -1,0 +1,67 @@
+\chapter{Effetti del modello matematico nella simulazione}
+\label{cha:cap4}
+
+
+In questo capitolo verranno descritti i risultati delle 
+simulazioni matlab, evidenziando le differenze che si verificano
+sulla base del modello matematico utilizzato per la simulazione.
+
+\section{Alfa Romeo Giulia}
+Le simulazioni sono state eseguite utilizzando i dati della 
+Alfa Romeo Giulia 2.2 Turbodiesel 150 cv.
+I dati sono stati presi da un modello VI-grade presente nei 
+database unipd in modo tale da poterne confrontare i risultati.
+
+\subsection{Parametri geometrici}
+\begin{table}[H]
+    \centering
+    \caption{Main vehicle parameters}
+    \vspace{0.5em}
+    \begin{tabular}{ccc}
+    \hline
+        Symbol & Name and unit & Value\\
+        \hline
+        m & Mass [kg] & 1449\\
+        J & Moment of inertia of yaw motion [kg $m^2$] & 2129 \\
+        l & Wheelbase [m] & 2.82\\
+        a & Front semi-wheelbase [m] & 1.315\\
+        b & Rear semi-wheelbase [m] & 1.505\\
+        $\tau$ & Transmission ratio & 11.8\\
+        $W_f$ & Front wheel track [m] & 1.557\\
+        $W_r$ & Rear wheel track [m] & 1.625\\
+        h & Center of mass height [m] & 0.592\\
+        $d_f$ & Front roll center height [m] & 0.041\\
+        $d_r$ & Rear roll center height [m] & 0.086\\
+    \hline    
+    \end{tabular}
+    \label{tab:tabella parametri Giulia}
+\end{table}
+
+\subsection{Rigidezze}
+\begin{table}[H]
+    \centering
+    \caption{Roll stiffness}
+    \vspace{0.5em}
+    \begin{tabular}{ccc}
+    \hline
+        Name & Value & Unit \\
+        \hline
+        Front suspension stiffness & $20.8*10^3$ & [N/m]\\
+        Front rollbar stiffness & $4.168*10^4$ & [Nm/rad]\\
+        Rear suspension stiffness & $28.8*10^3$ & [N/m]\\
+        Rear rollbar stiffness & $1.1709*10^4$ & [Nm/rad]\\
+        Roll stiffness ratio & 0.6468 & [-]\\
+    \hline    
+    \end{tabular}
+    \label{tab:tabella rigidezze}
+\end{table}
+
+\subsection{Pneumatici}
+Per le simulazioni dei file.tir forniti da Pirelli riguardanti dei pneumatici ----- e -----
+e dei pneumatici Toyo del tipo...
+
+\section{Confronti}
+I risultati mostrano che Utilizzando il modello single track
+indipendentemente dalla prova utilizzata i risultati sul 
+gradiente di sottosterzo sono analoghi.
+Aumentando la complessità del modello si riscontrano delle differenze

@@ -1,0 +1,34 @@
+\chapter*{Conclusioni}
+\markboth{CONCLUSIONI}{CONCLUSIONI}
+\thispagestyle{empty}
+\addcontentsline{toc}{chapter}{Conclusioni}
+
+
+In questo lavoro di tesi sono stati sviluppati diversi programmi,
+sia in ambiente MatLAB che in VisualC++, allo scopo di testare
+l'interfaccia aptica Piroga5, utilizzandola
+nella simulazione di un ambiente virtuale.
+
+Tale ambiente virtuale è stato creato con l'utilizzo di superfici
+NURBS, gestite da routine apposite, sviluppate in lavori precedenti, il cui codice è stato riscritto utilizzando la struttura a classi, e trattando quindi
+ ogni entità NURBS come un oggetto, con le sue variabili ed i suoi metodi.
+
+\`E stato \textit{sviluppato} un programma, che gestisce
+l'ambiente, restituendo i valori delle forze di reazione
+conseguenti agli urti con gli oggetti virtuali, e grazie a dei metodi innovativi nel calcolo del punto di minima
+distanza tra la punta dell'end-effector e la superficie
+dell'oggetto virtuale, la velocità di elaborazione è
+stata incrementata molto, consentendo di superare il KHz nelle frequenze di lavoro. 
+Ciò ha permesso di
+creare ambienti non più limitati ad una singola superficie: con
+due oggetti la frequenza di lavoro si aggira sui 1100Hz. Inoltre sono state implementate 
+anche superfici con caratteristiche di
+rigidezza variabile da punto a punto e in base anche allo spessore di
+penetrazione.
+
+Uno dei possibili sviluppi di questo lavoro è sicuramente rappresentato dalle MetaNurbs, ultimando i metodi e le tecniche già iniziati e purtroppo non completati per mancanza di tempo. Quando esse saranno completamente operative, permetteranno di raggiungere frequenze di lavoro elevatissime consentendo così di gestire molte più superfici contemporaneamente. A tal proposito andranno necessariamente migliorate le routine per l'importazione di NURBS da file IGES.
+
+
+\clearpage
+\thispagestyle{empty}
+\cleardoublepage

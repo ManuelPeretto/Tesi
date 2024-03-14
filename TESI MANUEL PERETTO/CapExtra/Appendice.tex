@@ -1,0 +1,82 @@
+\emph{\emph{\emph{}}}\appendix
+
+%questa è la parte dell'appendice, sono state inserite due appendici come esempio
+%E' sufficiente procedere come al solito, andando ad aggiungere i capitoli e le relative sezioni, etc. La differenza è che ogni capitolo avrà, invece di un numero, una lettera, cosicchè le sezioni diveranno A.1, A.2, e B.1, B.2
+
+\chapter{Glossario}
+In questa sezione sono presenti il glossario dei termini usati e un elenco di chiavi di ricerca (\emph{keyword}), con relativa traduzione italiana, utili per il reperimento degli argomenti sui motori di ricerca internazionali.
+
+\section{\label{sec:Glossario}Glossario di riferimento}
+\begin{itemize}
+\item \textbf{ABDUZIONE} - \emph{abduction} \\
+Movimento di allontanamento del braccio dal tronco.
+\item \textbf{ADDUZIONE} - \emph{adduction} \\
+Movimento di avvicinamento del braccio dal tronco.
+\item \textbf{APPARATO CAPSULO-LEGAMENTOSO} \\
+Sono strutture deputate a mantenere unite le estremità di due ossa contigue, e
+allo stesso tempo permettere il movimento di una rispetto all'altra (articolarità).
+\item \textbf{AFASIA} \\
+Perdita della capacità di comunicare oralmente, per segno o per iscritto, oppure
+incapacità di comprendere tali forme di comunicazione, perdita della capacità di
+usare il linguaggio.
+\item \textbf{AGRAFIA} \\
+Incapacità di esprimere per iscritto il proprio pensiero.
+\item ...
+\end{itemize}
+
+\section{\label{sec:Chiavi}Chiavi di ricerca}
+\begin{table}[h]
+	\centering
+		\begin{tabular}{c|c}
+		\textbf{Inglese} & \textbf{Italiano} \\
+			\hline
+			post stroke rehabilitation & riabilitazione post ictus \\
+			upper limb & arto superiore \\
+			wire-driven robot & robot a cavi \\
+			degrees of freedom & gradi di libertà \\
+			robot-aided rehabilitation & riabilitazione assistita da robot \\
+			subacute phase & fase acuta \\
+			chronic-phase & fase cronica \\
+			\end{tabular}	
+	\label{tab:CorrispondenzeItalianoInglese}
+\end{table}
+ 
+ 
+\chapter{\label{sec:CoordOmogenee}Le coordinate omogenee}
+L'uso delle coordinate omogenee permette
+di rappresentare in modo alternativo funzioni razionali, quali
+quelle viste per le curve di B\'ezier razionali (eq.
+%\ref{}) e le Nurbs (eq. \ref{}).
+L'idea \`e di rappresentare una curva razionale in uno spazio a
+\emph{n} dimensioni, come una curva polinomiale (non razionale) in
+uno spazio a $n+1$ dimensioni. Un punto in uno spazio 3D, scritto
+come $\textbf{P}=(x,y,z)$, diventa $\textbf{P}^{w}=(wx,wy,wz,w)$,
+con $w\neq 0$. La trasformazione che permette di passare dalla
+coordinate omogenee a quelle ``normali'' \`e:
+\begin{displaymath}
+\textbf{P}=H\{\textbf{P}^{w}\}=H\{(X,Y,Z,W)\}=H\Big\{ \Big( \frac{X}{W},\frac{Y}{W},\frac{Z}{W} \Big) \Big\}
+\end{displaymath}
+Ora, dato un insieme di punti di controllo $\{\textbf{P}_{i}\}$ e
+di pesi $w_{i}$ \`e possibile costruire dei punti di controllo
+pesati $\textbf{P}_{i}^{w}=(w_{i}x,w_{i}y,w_{i}z,w_{i})$, e
+definire curve di B\'ezier non-razionali in uno spazio a quattro
+dimensioni
+\begin{displaymath}
+\textbf{C}^{w}(u)=\sum_{i=0}^{n}B_{i,p}(u)\textbf{P}^{w}_{i}
+\end{displaymath}
+Poi, applicando la trasformazione vista sopra, si arriva alla forma razionale vista in eq. %\ref{eq:bezierrazionali}; come esempio vediamo la prima coordinata
+\begin{displaymath}
+x(u)=\frac{X(u)}{W(u)}=\frac{\displaystyle\sum_{i=0}^{n}B_{i,p}(u)w_{i}x_{i}}
+{\displaystyle\sum_{i=0}^{n}B_{i,n}(u)w_{i}}
+\end{displaymath}
+In questo modo possiamo definire anche superfici razionali come quella gi\`a vista a pag.%\pageref{eq:superficiebezierconw} e che qui viene riportata
+\begin{displaymath}
+\textbf{S}^{w}(u,v)=\sum_{i=0}^{n}\sum_{j=0}^{m}B_{i,p}(u)B_{j,q}(v)\textbf{P}^{w}_{i,j}
+\end{displaymath}
+da cui si ottiene, portandola allo spazio a 3 dimensioni:
+\begin{displaymath}
+\textbf{S}(u,v)=H\{\textbf{S}^{w}(u,v)\}=
+\frac{\sum_{i=0}^{n}\sum_{j=0}^{m}B_{i,p}(u)B_{j,q}(v)w_{i,j}\textbf{P}_{i,j}}
+{\sum_{i=0}^{n}\sum_{j=0}^{m}B_{i,p}(u)B_{j,q}(v)w_{i,j}}
+\end{displaymath}
+

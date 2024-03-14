@@ -1,0 +1,103 @@
+% DOCUMENTO PRINCIPALE DELLA TESI
+% Leggere i commenti nel file e i file PDF acclusi
+%
+% Ultima modifica: 13/11/2020
+
+
+% ---------- [ CLASSE e OPZIONI ]
+\documentclass[nofront,nocorrB,nocontro]{cls/dii2020}
+
+
+%  Le opzioni possibili sono:
+%  nocorrA 	:non mette il correlatore A
+%  nocorrB 	:non mette il correlatore B
+%  nocontro :non mette il controrelatore
+%  nofront	:non mette il frontespizio (col logo unipd) > è per vecchie tesi
+%  nolatex	:non mette il retro-frontespizio (coll'indicazione del latex)
+%  nodedica	:non mette la pagina con la dedica
+%  nocite 	:non mette la pagina con la citazione
+
+
+% ---------- [ PACCHETTI ]
+\usepackage{latexsym}
+\usepackage{hyperref}           % per rendere l'indice cliccabile
+\usepackage{graphicx}           % per poter inserire le figure
+\usepackage{epstopdf}           % per poter inserire anche EPS
+\epstopdfsetup{update}          % only regenerate pdf files when eps file is newer
+\usepackage{subfig}             % per suddividere le figure in sottofigure
+\usepackage[italian]{babel}     % titoli e sillabazione in italiano
+\usepackage[utf8]{inputenc}     % per poter usare le lettere accentate (à,ò,ì) senza problemi
+\usepackage{verbatim}           % per poter usare l'ambiente verbatim (va benissimo per il codice sorgente)
+\usepackage[vflt]{floatflt}     % pacchetto floatflt.sty' che permette di avere figure a lato del testo
+\usepackage{float}
+% ---------- [ SILLABAZIONI AGGIUNTIVE ]
+\hyphenation{ro-bo-ti-ca me-di-ca}  % correggere manualmente la sillabazione delle parole che il babel non sillaba correttamente
+
+
+% ---------- [ IMPOSTAZIONI PAGINA ] > NON MODIFICARE
+\linespread{1.4} % interlinea
+\voffset-0.3cm   % '1 pollice + voffset' é la distanza tra la pagina e il bordo alto
+\frenchspacing
+\begin{document}
+
+
+% ---------- [ INFORMAZIONI DELLA TESI ]
+% (rispettare Maiuscolo-Minuscolo!)
+% Non commentare alcunché
+\author{Manuel Peretto}
+\matricola{2055258}
+\title{La simulazione del sottosterzo nei veicoli}
+\relatore{Ch.mo Prof. Ing. MATTEO MASSARO} 
+\correlatoreA{Ch.mo Prof. Ing. Basilio Lenzo}
+\correlatoreB{--------}
+\controrelatore{--------}
+\annoa{2023-2024}
+
+% Inserire il nome del dipartimento del corso di studi di provenienza
+% Se è uguale a Dipartimento di Ingegneria Industriale LASCIARE VUOTO IL CAMPO
+\nomeDipartimento{}
+
+% utilizzare la prima riga per tesi Specialistiche, la seconda per Triennali
+\tipoLaurea{CORSO DI LAUREA MAGISTRALE IN INGEGNERIA MECCANICA}
+%\tipoLaurea{CORSO DI LAUREA TRIENNALE IN INGEGNERIA MECCANICA}
+
+
+% ---------- [ DEDICHE e CITAZIONI ]
+\dedica{ai miei genitori...}
+\citazione{\textquotedblleft{} Without commitment you'll never start, 
+\\but more importantly, 
+\\without consistency you'll never finish \textquotedblright}
+\autoreCitazione{}
+
+
+% ---------- [ COPERTINA e INDICE ] > NON MODIFICARE
+\pagenumbering{Roman}
+\maketitle
+\tableofcontents
+
+
+% ---------- [ SOMMARIO e INTRODUZIONE ]
+
+\include{CapExtra/Introduzione}
+
+
+% ---------- [ NUMERAZIONI ] > NON MODIFICARE
+\pagestyle{headings}
+\setcounter{chapter}{0}\setcounter{section}{0}
+\pagenumbering{arabic}
+
+
+% ---------- [ CAPITOLI ]
+\include{Cap/capitolo1}
+\include{Cap/capitolo2}
+\include{Cap/capitolo3}
+\include{Cap/capitolo4}
+\include{Cap/capitolo5}
+
+% ---------- [ PARTI AGGIUNTIVE ]
+\include{CapExtra/Conclusioni}
+\include{CapExtra/Appendice}
+\include{CapExtra/Bibliografia}
+\include{CapExtra/Grazie}
+
+\end{document}
