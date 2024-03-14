@@ -107,15 +107,15 @@ In questa formulazione la Y rappresenta la variabile in output desiderata, può 
 $F_x$, $F_y$ oppure $M_z$, $X$è la variabile in input scelta tra $\alpha$ e $k$. I Coefficenti B, C, D, E, chiamati anche coefficienti di Pacejka, esprimono:
 \begin{itemize}
     \item B $\longrightarrow$ Stiffness factor \hspace{2.3cm} B $>$ 0
-    \item C $\longrightarrow$ Shape factor     \hspace{2.3cm} 1 $<$ C $<$ 2
-    \item D $\longrightarrow$ Peak value       \hspace{2.6cm} D $= \mu*F_Z$
+    \item C $\longrightarrow$ Shape factor \hspace{2.3cm} 1 $<$ C $<$ 2
+    \item D $\longrightarrow$ Peak value  \hspace{2.6cm} D $= \mu*F_Z$
     \item E $\longrightarrow$ Curvature factor \hspace{2cm} E $<$ 1
 \end{itemize}
 I range consigliati sono presi da \cite{Guiggiani}.
 
 \subsection{Evoluzione della Magic Formula}
 La prima versione della Magic formula è stata sviluppata nel 1987 da allora sono state create una serie di nuove versioni.
-Nel 1996 TNO automotive ha introdotto modello di pneumatico MF-Tyre 5.0 ed il software commerciale MF-Tool per l'identificazione dei parametri. Questi sono basati sulle equazioni presentate nell'articolo di Pacejka del 1996 \cite{Pacejka1997MagicFT}.\\ 
+Nel 1996 TNO automotive ha introdotto modello di pneumatico MF-Tyre 5.0 ed il software commerciale MF-Tool per l'estrapolazione dei parametri partendo dai dati sperimentali. Entrambi erano basati sulle equazioni presentate nell'articolo di Pacejka del 1996 \cite{Pacejka1997MagicFT}.\\ 
 Nel corso degli anni sono stati apportati alcuni miglioramenti (es. aggiunta del
 momento di ribaltamento, slittamento combinato migliorato, ecc.) e sono stati rilasciati i modelli: MF-Tyre 5.1 e MF-Tyre 5.2 seguentemente.\\ 
 MF-Tyre è stato concepito specificatamente per autovetture e camion utilizzanti pneumatici con
@@ -125,9 +125,8 @@ Nella versione MF-Tyre 6.0 le equazioni sono state ri-adattate, in modo che un u
 È stato aggiunto inoltre il turn slip per rappresentare, ad esempio, il momento di autoallineamento
 che si verifica durante la sterzata del pneumatico a veicolo fermo.\\ 
 La MF-Tyre 6.1 estende le equazioni per poter incorporare gli effetti delle variazioni nella pressione di gonfiaggio.\\
-La MF-Tyre 6.2 il raggio di carico viene aggiornato per ampi slittamenti laterali e camber
-angoli. ed inoltre rende disponibile l'estensione MF-Swift per motociclette. MF-Swift utilizza un modello ad anello rigido cioè si assume che la cintura del pneumatico si comporti come un corpo rigido. Questo comporta un attendibilità maggiore nella gamma di frequenze in cui la flessione della cintura del pneumatico può essere trascurata, a seconda del tipo di pneumatico siamo tra i 60 e i 100 Hz.\\ 
-Il modello include gli effetti giroscopici, esso utilizza un singolo punto di contatto per il calcolo dello slittamento. Riesce a descrivere lo slittamento in transitorio, fino allo scorrimento completo, grazie al diminuzione della lunghezza di rilassamento all'aumentare dello slip. \\
+Nella MF-Tyre 6.2 il raggio di carico viene aggiornato per elevati angoli di deriva e camber. Rende inoltre disponibile l'estensione MF-Swift per motociclette. MF-Swift introduce un modello ad anello rigido, cioè si assume che la cintura del pneumatico si comporti come un corpo rigido. Questo comporta un attendibilità maggiore nella gamma di frequenze in cui la flessione della cintura del pneumatico può essere trascurata, a seconda del tipo di pneumatico siamo tra i 60 e i 100 Hz.\\ 
+Il modello include gli effetti giroscopici ed utilizza un singolo punto di contatto per il calcolo dello slip; Riesce a descrivere lo slip in transitorio fino allo scorrimento completo, grazie al diminuzione della lunghezza di rilassamento all'aumentare dello slip. \\
 MF-Swift è adatto per prove con raggi di curvatura che abbiano lunghezza d'onda dell'ordine di due volte la lunghezza del contatto.\\ 
 \begin{figure}[!h]
     \centering
@@ -156,22 +155,21 @@ Per convenzione si utilizza una parola univoca che identifica la versione utiliz
 \end{itemize}
 
 \subsubsection{Tire property file}
-Le version MF-Tyre precedentemente elencate sono modelli di simulazione di pneumatici definiti da una serie di parametri. Questi parametri vengono generalmente archiviati in dei file, chiamati "Tire Property File". Questo file ha tipicamente l'estensione ".tir".\\ 
-La figura \ref{fig:Structure_file_tir} mostra la classica struttura e il contenuto del file.\\
+Le versioni MF-Tyre precedentemente elencate sono modelli di simulazione di pneumatici definiti da una serie di parametri. Questi parametri vengono generalmente archiviati in dei file, chiamati "Tire Property File" aventi tipicamente l'estensione ".tir".\\ 
+La figura \ref{fig:Structure_file_tir} mostra la classica struttura e il contenuto del file:\\
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=0.9]{Immagini/Tyres/Structure_file_tir.png}
     \caption{}
     \label{fig:Structure_file_tir}
 \end{figure}
-Nella prima sezione del file sono elencate tutte le informazioni generali , le unità di misura , tutte le caratteristiche geometriche del pneumatico
+Nella prima sezione sono elencate tutte le informazioni generali , le unità di misura , tutte le caratteristiche geometriche del pneumatico
 e le proprietà strutturali dello stesso.\\
-Nella seconda sezione vengono elencati i limiti di pressione , forza verticale , vari slip e camber ai quali il modello può operare.\\
+Nella seconda sezione vengono elencati i limiti di pressione , forza verticale , slip e camber ai quali il modello può operare.\\
 La terza sezione è la più ampia, all'interno si trovano numerosi coefficienti, di seguito elencheremo i più significativi.\\
-I coefficienti di scala iniziano con la lettera L essi vengono inclusi nel modello per poter ottenere un modello che simuli la realtà nel modo più affine possibile.
-Come visto nell'introduzione ai pneumatici, le prove di forza e momenti vengono spesso eseguite ambiente di laboratorio.\\ 
-La superficie stradale artificiale sulla macchina di prova per pneumatici può essere molto diversa rispetto al reale manto stradale.
-Combinato all'incertezza sulla temperatura, umidità, usura, pressione di gonfiaggio, ecc. il comportamento del pneumatico montato sul veicolo potrebbe discostarsi in modo significativo rispetto ai risultati ottenuti mediante la macchina di prova.\\
+I coefficienti di scala iniziano con la lettera L essi vengono inclusi nel file per poter ottenere un modello che simuli la realtà nel modo più affine possibile.
+Come visto nell'introduzione ai pneumatici, le prove di forza e momenti vengono spesso eseguite in ambiente di laboratorio:\\ 
+La superficie stradale artificiale della macchina di prova per pneumatici è usualmente molto diversa rispetto al reale manto stradale, questo, combinato all'incertezza sulla temperatura, umidità, usura, pressione di gonfiaggio, ecc., determina che il comportamento del pneumatico montato sul veicolo potrebbe discostarsi in modo significativo rispetto ai risultati ottenuti mediante la macchina di prova.\\
 Verosimilmente si potrebbero avere differenze fino al 20$\%$ nel coefficiente di attrito e nella cornering stiffness \cite{Braghin2006EnvironmentalEO}.\\
 I più importanti fattori di scala sono:\\
 \begin{table}[h!] 
@@ -193,6 +191,7 @@ I più importanti fattori di scala sono:\\
     \label{tab:scaling factors}
 \end{table}
 \\
+Nelle equazioni i coefficienti di scala vengono denominati attraverso il simbolo $\lambda$\\
 I coefficienti della sezione 3 verranno discussi 
 approfonditamente nelle successive sottosezioni.\\
 La quarta sezione contiene i coefficienti per gli effetti termici e gli effetti di velocità.
@@ -200,21 +199,31 @@ Tuttavia essa si trova molto raramente per via della complessità che accompagna
 
 \subsubsection{MF 5.2}
 Fin dalla sua concezione, oltre 20 anni fa, la Magic Formula è stata adottata abbastanza rapidamente nell' industria come modello di pneumatico standard per simulazioni di manovrabilità dei veicoli.\\ 
-Nel corso degli anni sono stati apportati vari sviluppi
-migliorare l'accuratezza ed estendere le capacità del modello, ad esempio il metodo per descrivere lo slip combinato è stato migliorato.\\
-Il modello di pneumatico MF-Tire 5.2 ha dimostrato una buona attendibilità ed è tuttora ampiamente utilizzato negli studi dinamica dei veicoli. 
-Le equazioni del modello \\
+Nel corso degli anni sono stati apportati vari sviluppi per
+migliorare l'accuratezza ed estendere le capacità del modello.\\
+Rispetto alla versione precedente (5.1), la 5.2 presenta alcune migliorie:\\
+-I fattori di scala sono stati definiti in modo tale che gli effetti di conicità e plysteer possano essere facilmente disattivati.\\
+-\'E stato introdotto il fattore "E", rendendo il modello più accurato in condizione di slip combinato (laterale + longitudinale).\\
+-La resistenza al rotolamento è diventata funzione della velocità.\\
+-Ed è stato introdotto l'effetto del Camber sul picco di forza longitudinale.\\
 
+Il modello di pneumatico MF-Tyre 5.2 ha dimostrato una buona attendibilità ed è tuttora ampiamente utilizzato negli studi di dinamica dei veicoli. \\
+
+
+
+Le equazioni del modello (si trovano nel MF-Tyre MF-5.2 users manual) \\
+...................da completare.
 
 \subsubsection{MF 6.1}
-Il modello MF-Tire 5.2 necessitava di alcune evoluzioni che ne ampliassero le potenzialità,
-gli obbiettivi erano:\\
--Migliorare la descrizione del camber, attraverso una formulazione e un un controllo espliciti sulla rigidità al camber ed estendere le capacità del modello nel gestire angoli molto ampi (motocicli).\\
--Includere l'effetto della pressione di gonfiaggio. Questo permetteva di eliminare i diversi file per diverse pressioni dei pneumatici in quanto consente di prevedere 
-comportamento anche a pressioni differenti rispetto a quello con il quale si è svolta il test sperimentale, riducendo di conseguenza il numero di misurazioni richieste.
--Rendere coerente la descrizione della dinamica dei pneumatici tra MF-Swift e MF-Tire. Includendo l'effetto della carcassa e del rilassamento del pneumatico 
-Inoltre sono stati apportati ulteriori miglioramenti, ad esempio nella descrizione della resistenza al rotolamento e del momento di ribaltamento.
-Tutto ciò è stato implementato attraverso la versione 6.1 (MF-Tyre 6.1).\\
+%Il modello MF-Tire 5.2 necessitava di alcune evoluzioni che ne ampliassero le potenzialità,
+%gli obbiettivi erano:\\
+Il modello MF-Tyre 6.1 rappresenta un evoluzione del 5.2, quest'ultimo infatti necessitava di alcune evoluzioni che ne ampliassero le potenzialità.\\
+Nel 2010 il Dipartimento di ingegneria meccanica dell'Università di Eindhoven ha lavorato in tal senso con degli obbiettivi specifici:\\
+-Migliorare la descrizione del camber, attraverso una formulazione ed un controllo espliciti sulla rigidezza al camber, estendendo inoltre le capacità del modello nel gestire angoli molto ampi (motocicli).\\
+-Includere l'effetto della pressione di gonfiaggio. Questo permetteva di eliminare i numerosi file creati a diverse pressioni, in quanto consentiva di prevedere il
+comportamento anche a pressioni differenti rispetto a quella con la quale si è svolto il test sperimentale, riducendo di conseguenza il numero di misurazioni richieste.\\
+-Rendere coerente la descrizione della dinamica dei pneumatici tra MF-Swift e MF-Tire. Includendo l'effetto del rilassamento del pneumatico e della carcassa rigida.\\
+-Migliorare la descrizione della resistenza al rotolamento e del momento di ribaltamento.\\
 
 \begin{figure}[ht]
     \centering
@@ -225,34 +234,151 @@ Tutto ciò è stato implementato attraverso la versione 6.1 (MF-Tyre 6.1).\\
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.8]{Immagini/Tyres/Tyre pressure effects for a passenger car tyre.png}
+    \includegraphics[scale=0.7]{Immagini/Tyres/Tyre pressure effects for a passenger car tyre.png}
     \caption{Effetto della pressione di gonfiaggio sulla cornering stiffness e sul momento di autollineamento}
     \label{fig:Pressure effects}
 \end{figure}
-
 La fig. \ref{fig:Pressure effects} mostra come al diminuire della pressione di gonfiaggio, la cornering stiffness aumenti in modo più rapido al crescere di $F_Z$ fino a valori di 5000[N] questo è dovuto al fatto .............\\
-
-\begin{figure}[ht]
+\begin{figure}[!h]
     \centering
-    \includegraphics[scale=0.8]{Immagini/Tyres/comparison MF-Tire version.png}
+    \includegraphics[scale=0.7]{Immagini/Tyres/comparison MF-Tire version.png}
     \caption{Confronto fra le versioni MF-Tire}
     \label{fig:Comparison MF-Tire version}
 \end{figure}
- 
-
-I Grafici riportati sono presi da \cite{Besselink2010AnIM}.\\
+La fig. \ref{fig:Comparison MF-Tire version} mostra un confronto tra la media degli errori di fitting.\\  
+Le fig. \ref{fig:Pressure effects} e \ref{fig:Comparison MF-Tire version} sono prese da \cite{Besselink2010AnIM}.\\
 
 \section{Dinamica Laterale}
-La fonte di questo argomento è ....., mentre ulteriori approfondimenti si trovano in 
-In questo capitolo verranno descritte le basi della dinamica del veicolo per quanto concerne la dinamica laterale.
-\\Per l'analisi (quasi)-stazionaria verranno utilizzati semplici modelli di veicoli. 
-Verranno introdotte le caratteristiche della forza laterale effettiva sui pneumatici........ 
+In questo capitolo verranno descritte le basi della dinamica del veicolo per quanto concerne la dinamica laterale.\\
+Il comportamento dinamico di un veicolo può essere suddiviso in: longitudinale (trazione
+e frenata), laterale (handling) e verticale (comfort).
+In questa trattazione ci occuperemo del comportamento laterale cioè l'insieme delle risposte dinamiche in direzione perpendicolare alla direzione del moto, che il veicolo restituisce in risposta agli input forniti dal guidatore (sterzo e velocità).\\
+Le fonti di questo argomento sono \cite{Guiggiani} e \cite{limebeer2018dynamics}, mentre ulteriori approfondimenti si trovano in  \cite{pacejka2005tire}.\\
 
 
+
+In questa prima analisi il veicolo viene considerato un unico corpo rigido in
+moto su un piano, dunque avente tre gradi di libertà: due traslatori e uno
+rotatorio con asse perpendicolare al piano considerato.\\ 
+Per l'analisi (quasi)-stazionaria verranno utilizzati semplici modelli di veicoli. 
 
 
 \subsection{Single track model}
-è il modello più semplice utilizzato per analizzare le dinamiche laterali dei veicoli
+Il modello a singola traccia anche chiamato in gergo modello a "bicicletta" è il modello più semplice utilizzato per analizzare le dinamiche laterali dei veicoli.\\
+\'E molto utile per comprendere i fenomeni di handling in quanto presenta il vantaggio dell'essere semplice ed intuitivo permettendo una rapida valutazione dell'influenza dei parametri caratteristici.\\
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.7]{Immagini/Tyres/Single_track_model.jpg}
+    \caption{cinematica del single track model}
+    \label{fig:Single track model}
+\end{figure}
+Ammettendo la simmetria rispetto all’asse longitudinale,
+il veicolo può esser rappresentato da una sola linea con alle estremità i due
+pneumatici (assale posteriore e anteriore condensati in due singole ruote virtuali). Come si può vedere in \ref{fig:Single track model} si tratta di un corpo rigido di massa
+$m$ concentrata nel centro di massa G, le cui distanze $a$ e $b$ sono i due semipassi,
+rispettivamente anteriore e posteriore. Con $L$ o $W$ si indica il passo, cioè la distanza tra asse anteriore e posteriore.\\
+%\singlespace 
+Inoltre è possibile definire:
+\begin{itemize}
+    \begin{spacing}{1}
+    \setlength\itemsep{-0.1em}
+    \item \textbf{Velocità longitudinale} ($u$) : velocità di avanzamento in direzione longitudinale al veicolo.
+    \item \textbf{Velocità laterale} ($v$) : velocità di scorrimento laterale del veicolo
+    \item \textbf{Velocità d'imbardata} ($r$) : velocità angolare rispetto all'asse verticale z del sistema di riferimento assoluto
+    \item \textbf{Angolo di assetto} ($\beta$) : angolo formato tra la direzione del vettore velocità assoluta e la direzione longitudinale del veicolo.
+    \item \textbf{Angoli di deriva} ($\alpha_f$) e ($\alpha_r$) : angoli formati tra il piano medio della ruota (anteriore o posteriore) ed il vettore velocità del centro del impronta di contatto.
+    \item \textbf{Angolo di sterzo} ($\delta$) : angolo formato tra l'asse di simmetria del veicolo ed il piano della ruota.
+    \end{spacing}
+\end{itemize}
+Questo modello ignora gli effetti delle sospensioni, del telaio e del trasferimento del carico laterale.\\
+
+\subsubsection{Equazioni di equilibrio}
+La velocità assoluta del centro di massa può essere espressa attraverso i versori del sistema di riferimento del veicolo:\\
+\begin{equation}
+\textbf{V} = u\textbf{i}+v\textbf{j}
+\end{equation}
+L'accelerazione laterale è data:\\
+\begin{equation}
+\begin{split}
+\frac{d\textbf{V}}{dt} & = \textbf{$\dot V$}+r\textbf{k}\times\textbf{V}\\
+\frac{d\textbf{V}}{dt} & = \hat{a_x}\textbf{i}+\hat{a_y}\textbf{j}
+\end{split}
+\end{equation}
+$\hat{a_x}$ è l'accelerazione longitudinale mentre $\hat{a_y}$ è accelerazione laterale normale al piano di simmetria del veicolo.\\
+\begin{align}
+\hat{a_x} & = \dot u - rv\\
+\hat{a_y} & = \dot v + ru
+\end{align}
+Imponendo l'equilibrio delle forze in direzione longitudinale e laterale e dei momenti si ottengono le seguenti equazioni del moto:
+\begin{align}
+m(\dot u- rv) & = -F_{yf} \sin \delta+F_{xf} \cos \delta+F_{xr}\\
+m(\dot v+ ru) & = +F_{yf} \cos \delta+F_{xf} \sin \delta+F_{yr}\\
+J\dot r & = a*(F_{yf} \cos \delta+F_{xf} \sin \delta)-b*F_{yr}\\[3mm]
+m\dot u & =  mrv-F_{yf} \sin \delta+F_{xf} \cos \delta+F_{xr} \label{eq:eom longitudinal}\\
+m\dot v & = -mru+F_{yf} \cos \delta+F_{xf} \sin \delta+F_{yr} \label{eq:eom lateral}\\
+J\dot r & = a*(F_{yf} \cos \delta+F_{xf} \sin\delta)-b*F_{yr} \label{eq:eom yaw}
+\end{align}
+Nelle quali $m$ e $J$ sono rispettivamente la massa ed il momento d'inerzia all'imbardata, mentre $u$, $v$, e $r$ sono le variabili di stato del modello.
+Per veicoli a trazione posteriore e ipotesi di resistenza al rotolamento nulla la $F_{fx}$ è trascurabile.\\
+Inoltre approssimando il $sin(\delta)=0$ e $cos(\delta)=1$, l'eq.\ref{eq:eom longitudinal} 
+risulta disaccoppiata e dunque ininfluente nello studio delle dinamiche laterali\\
+Rimangono dunque solo le \ref{eq:eom lateral} e \ref{eq:eom yaw} che diventano:
+\begin{align}
+m\dot v & = -mru+F_{yf}+F_{yr}\label{eq:eom lateral 2}\\
+J\dot r & = a*F_{yf}-b*F_{yr}\label{eq:eom yaw 2}
+\end{align}
+
+\subsubsection{Equazioni cinematiche}
+I tre angoli di deriva possono essere calcolati utilizzando le seguenti relazioni cinematiche:
+\begin{align}
+\beta & = \arctan(\frac{v}{u})\\
+\alpha_f & = \delta - \arctan(\frac{ra+v}{u})\\
+\alpha_r & = \arctan(\frac{rb-v}{u})
+\end{align}
+Nell'ipotesi di piccoli angoli queste possono essere approssimate
+\begin{align}
+\beta & = \frac{v}{u}\\
+\alpha_f & = \delta - \frac{ra+v}{u} \label{eq:alfa front} \\
+\alpha_r & = \frac{rb-v}{u} \label{eq: alfa rear}
+\end{align}
+Definiamo il raggio di curvatura con $R$ ed è pari a: $R=....$.\\
+Mentre la Curvatura è l'inverso del raggio di curvatura dunque $\rho = \frac{1}{R}$.\\
+Attraverso l'equilibrio delle forze in direzione Z si ricavano i carichi verticali (statici) sui singoli assi:
+\begin{align}
+F_{zf} & = mg \frac{b}{a+b}\\
+F_{zr} & = mg \frac{a}{a+b}
+\end{align}
+
+\subsubsection{Modello monotraccia lineare}
+Si può riepilogare quanto visto finora attraverso il modello monotraccia lineare, Abbiamo visto nella sezione pneumatici come essi possano essere semplificati in modo puramente teorico con un equazione lineare dove la forza laterale generata è funzione dell'angolo di deriva moltiplicato per la rigidezza (cornering stiffness).
+\begin{equation}
+    \label{eq:Fy=C*alfa}
+    F_{y,i} = C_i*\alpha_i
+\end{equation}
+Introducendo in quest'ultima equazione le equazioni cinematiche degli angoli di slip \ref{eq:alfa front} e \ref{eq: alfa rear} otteniamo:\\
+\begin{align}
+F_{yf} & = C_f*\alpha_f = C_f*(\delta - \frac{ra+v}{u}) \\
+F_{yr} & = C_r*\alpha_r = C_r*(\frac{rb-v}{u}) 
+\end{align}
+Sostituendo queste due equazioni all'interno delle equazioni di equilibrio \ref{eq:eom lateral 2} e \ref{eq:eom yaw 2} otteniamo le seguenti equazioni del moto:
+\begin{align}
+m\dot v & = -mru + C_f\delta  + ( C_f - C_r)\frac{v}{u} + (- C_fa + C_rb)\frac{r}{u}\label{eq:eom lateral linear}\\
+J\dot r & = aC_f\delta - (C_f a^2 + C_r b^2)\frac{r}{u} + (- C_fa + C_rb)\frac{v}{u}\label{eq:eom yaw linear}
+\end{align}
+\begin{align}
+\dot v & = \frac{( C_f - C_r)}{mu}v + \frac{(- C_fa + C_rb)}{mu}r - \frac{u}{m}r + \frac{C_f}{m}\delta\label{eq:eom lateral linear}\\
+\dot r & = \frac{(- C_fa + C_rb)}{Ju}v - \frac{(C_f a^2 + C_r b^2)}{Ju}r + \frac{aC_f}{J}\delta \label{eq:eom yaw linear}
+\end{align}
+In condizioni quasi-statiche le accelerazioni sono nulle dunque:
+\begin{align}
+0 & = \frac{( C_f - C_r)}{mu}v + \frac{(- C_fa + C_rb)}{mu}r - \frac{u}{m}r + \frac{C_f}{m}\delta\label{eq:eom lateral linear}\\
+0 & = \frac{(- C_fa + C_rb)}{Ju}v - \frac{(C_f a^2 + C_r b^2)}{Ju}r + \frac{aC_f}{J}\delta \label{eq:eom yaw linear}
+\end{align}
+Questo è un sistema di due equazioni e due incognite $v$ e $r$ nel quale $u$ e $\delta$ sono gli input.\\
+Si può risolvere con il metodo matriciale attraverso le matrici A e B.
+
+
+
 \subsection{Double track model}
 \subsubsection{Trasferimento di carico laterale}
 \subsubsection{Ackermann steering}
