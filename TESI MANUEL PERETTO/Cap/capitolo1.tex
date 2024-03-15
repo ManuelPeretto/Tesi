@@ -264,18 +264,19 @@ Per l'analisi (quasi)-stazionaria verranno utilizzati semplici modelli di veicol
 
 
 \subsection{Single track model}
-Il modello a singola traccia anche chiamato in gergo modello a "bicicletta" è il modello più semplice utilizzato per analizzare le dinamiche laterali dei veicoli.\\
+Il modello a singola traccia anche chiamato impropriamente (in gergo) modello a "bicicletta" è il modello più semplice utilizzato per analizzare le dinamiche laterali dei veicoli.\\
 \'E molto utile per comprendere i fenomeni di handling in quanto presenta il vantaggio dell'essere semplice ed intuitivo permettendo una rapida valutazione dell'influenza dei parametri caratteristici.\\
 \begin{figure}[!h]
     \centering
-    \includegraphics[scale=0.7]{Immagini/Tyres/Single_track_model.jpg}
+    \includegraphics[scale=0.7]{Immagini/Lateral dynamics/Single_track_model.jpg}
     \caption{cinematica del single track model}
     \label{fig:Single track model}
 \end{figure}
 Ammettendo la simmetria rispetto all’asse longitudinale,
 il veicolo può esser rappresentato da una sola linea con alle estremità i due
-pneumatici (assale posteriore e anteriore condensati in due singole ruote virtuali). Come si può vedere in \ref{fig:Single track model} si tratta di un corpo rigido di massa
-$m$ concentrata nel centro di massa G, le cui distanze $a$ e $b$ sono i due semipassi,
+pneumatici (assale posteriore e anteriore sono condensati in due singole "
+ruote equivalenti").\\
+la fig. \ref{fig:Single track model} è la rappresentazione, appunto, della vista dall'alto di un veicolo privo di larghezza ,si tratta di un corpo rigido di massa $m$ concentrata nel centro di massa G, le cui distanze $a$ e $b$ sono i due semipassi,
 rispettivamente anteriore e posteriore. Con $L$ o $W$ si indica il passo, cioè la distanza tra asse anteriore e posteriore.\\
 %\singlespace 
 Inoltre è possibile definire:
@@ -291,7 +292,6 @@ Inoltre è possibile definire:
     \end{spacing}
 \end{itemize}
 Questo modello ignora gli effetti delle sospensioni, del telaio e del trasferimento del carico laterale.\\
-
 \subsubsection{Equazioni di equilibrio}
 La velocità assoluta del centro di massa può essere espressa attraverso i versori del sistema di riferimento del veicolo:\\
 \begin{equation}
@@ -301,7 +301,7 @@ L'accelerazione laterale è data:\\
 \begin{equation}
 \begin{split}
 \frac{d\textbf{V}}{dt} & = \textbf{$\dot V$}+r\textbf{k}\times\textbf{V}\\
-\frac{d\textbf{V}}{dt} & = \hat{a_x}\textbf{i}+\hat{a_y}\textbf{j}
+ & = \hat{a_x}\textbf{i}+\hat{a_y}\textbf{j}
 \end{split}
 \end{equation}
 $\hat{a_x}$ è l'accelerazione longitudinale mentre $\hat{a_y}$ è accelerazione laterale normale al piano di simmetria del veicolo.\\
@@ -319,10 +319,10 @@ m\dot v & = -mru+F_{yf} \cos \delta+F_{xf} \sin \delta+F_{yr} \label{eq:eom late
 J\dot r & = a*(F_{yf} \cos \delta+F_{xf} \sin\delta)-b*F_{yr} \label{eq:eom yaw}
 \end{align}
 Nelle quali $m$ e $J$ sono rispettivamente la massa ed il momento d'inerzia all'imbardata, mentre $u$, $v$, e $r$ sono le variabili di stato del modello.
-Per veicoli a trazione posteriore e ipotesi di resistenza al rotolamento nulla la $F_{fx}$ è trascurabile.\\
+Per veicoli a trazione posteriore (RWD) e ipotesi di resistenza al rotolamento nulla, la $F_{fx}$ è trascurabile.\\
 Inoltre approssimando il $sin(\delta)=0$ e $cos(\delta)=1$, l'eq.\ref{eq:eom longitudinal} 
 risulta disaccoppiata e dunque ininfluente nello studio delle dinamiche laterali\\
-Rimangono dunque solo le \ref{eq:eom lateral} e \ref{eq:eom yaw} che diventano:
+Rimangono di conseguenza solo le \ref{eq:eom lateral} e \ref{eq:eom yaw} che diventano:
 \begin{align}
 m\dot v & = -mru+F_{yf}+F_{yr}\label{eq:eom lateral 2}\\
 J\dot r & = a*F_{yf}-b*F_{yr}\label{eq:eom yaw 2}
@@ -341,8 +341,8 @@ Nell'ipotesi di piccoli angoli queste possono essere approssimate
 \alpha_f & = \delta - \frac{ra+v}{u} \label{eq:alfa front} \\
 \alpha_r & = \frac{rb-v}{u} \label{eq: alfa rear}
 \end{align}
-Definiamo il raggio di curvatura con $R$ ed è pari a: $R=....$.\\
-Mentre la Curvatura è l'inverso del raggio di curvatura dunque $\rho = \frac{1}{R}$.\\
+Definiamo con $R$ il raggio di curvatura : $R=\frac{u}{r}$.\\
+Mentre la Curvatura è l'inverso del raggio di curvatura dunque $\rho = \frac{1}{R} = \frac{r}{u}$.\\
 Attraverso l'equilibrio delle forze in direzione Z si ricavano i carichi verticali (statici) sui singoli assi:
 \begin{align}
 F_{zf} & = mg \frac{b}{a+b}\\
@@ -350,7 +350,7 @@ F_{zr} & = mg \frac{a}{a+b}
 \end{align}
 
 \subsubsection{Modello monotraccia lineare}
-Si può riepilogare quanto visto finora attraverso il modello monotraccia lineare, Abbiamo visto nella sezione pneumatici come essi possano essere semplificati in modo puramente teorico con un equazione lineare dove la forza laterale generata è funzione dell'angolo di deriva moltiplicato per la rigidezza (cornering stiffness).
+Si può riepilogare quanto visto finora attraverso il modello monotraccia lineare, Abbiamo visto nella sezione pneumatici come essi possano essere semplificati in modo puramente teorico con l' equazione costitutiva lineare dove la forza laterale generata è funzione dell'angolo di deriva moltiplicato per la rigidezza (cornering stiffness).
 \begin{equation}
     \label{eq:Fy=C*alfa}
     F_{y,i} = C_i*\alpha_i
@@ -363,24 +363,194 @@ F_{yr} & = C_r*\alpha_r = C_r*(\frac{rb-v}{u})
 Sostituendo queste due equazioni all'interno delle equazioni di equilibrio \ref{eq:eom lateral 2} e \ref{eq:eom yaw 2} otteniamo le seguenti equazioni del moto:
 \begin{align}
 m\dot v & = -mru + C_f\delta  + ( C_f - C_r)\frac{v}{u} + (- C_fa + C_rb)\frac{r}{u}\label{eq:eom lateral linear}\\
-J\dot r & = aC_f\delta - (C_f a^2 + C_r b^2)\frac{r}{u} + (- C_fa + C_rb)\frac{v}{u}\label{eq:eom yaw linear}
+J\dot r & = aC_f\delta + (C_f a^2 + C_r b^2)\frac{r}{u} + ( C_fa - C_rb)\frac{v}{u}\label{eq:eom yaw linear}
 \end{align}
 \begin{align}
-\dot v & = \frac{( C_f - C_r)}{mu}v + \frac{(- C_fa + C_rb)}{mu}r - \frac{u}{m}r + \frac{C_f}{m}\delta\label{eq:eom lateral linear}\\
-\dot r & = \frac{(- C_fa + C_rb)}{Ju}v - \frac{(C_f a^2 + C_r b^2)}{Ju}r + \frac{aC_f}{J}\delta \label{eq:eom yaw linear}
+\dot v & = \frac{ C_f - C_r}{mu}v + \frac{- C_fa + C_rb}{mu}r - \frac{u}{m}r + \frac{C_f}{m}\delta\label{eq:eom lateral linear}\\
+\dot r & = \frac{ C_fa - C_rb}{Ju}v + \frac{C_f a^2 + C_r b^2
+}{Ju}r + \frac{aC_f}{J}\delta \label{eq:eom yaw linear}
 \end{align}
 In condizioni quasi-statiche le accelerazioni sono nulle dunque:
 \begin{align}
-0 & = \frac{( C_f - C_r)}{mu}v + \frac{(- C_fa + C_rb)}{mu}r - \frac{u}{m}r + \frac{C_f}{m}\delta\label{eq:eom lateral linear}\\
-0 & = \frac{(- C_fa + C_rb)}{Ju}v - \frac{(C_f a^2 + C_r b^2)}{Ju}r + \frac{aC_f}{J}\delta \label{eq:eom yaw linear}
+0 & = \frac{ C_f - C_r}{mu}v + \frac{- C_fa + C_rb}{mu}r - ur + \frac{C_f}{m}\delta\\
+0 & = \frac{ C_fa - C_rb}{Ju}v + \frac{C_f a^2 + C_r b^2}{Ju}r + \frac{aC_f}{J}\delta 
 \end{align}
 Questo è un sistema di due equazioni e due incognite $v$ e $r$ nel quale $u$ e $\delta$ sono gli input.\\
-Si può risolvere con il metodo matriciale attraverso le matrici A e B.
+Introducendo la notazione matriciale il sistema \ref{eq:eom lateral linear} \ref{eq:eom yaw linear} può essere rappresentato attraverso le matrici A e B.\\
+\begin{equation}
+\begin{Bmatrix}
+\dot v\\
+\dot r
+\end{Bmatrix}
+=
+\underbrace{\begin{bmatrix}
+\frac{ C_f - C_r}{mu} & \frac{- C_fa + C_rb}{mu} - u\\
+\frac{ C_fa - C_rb}{Ju}  & \frac{C_f a^2 + C_r b^2}{Ju} 
+\end{bmatrix}}_{A}
+\begin{Bmatrix}
+v\\
+r
+\end{Bmatrix}
+\underbrace{\begin{bmatrix}
+\frac{C_f}{m}\\
+\frac{aC_f}{J} 
+\end{bmatrix}}_{B}
+\begin{Bmatrix}
+\delta
+\end{Bmatrix}
+\end{equation}
+In condizioni di regime ricaviamo la velocità laterale e la velocità angolare d'imbardata :
+\begin{equation}
+\begin{Bmatrix}
+v\\
+r
+\end{Bmatrix}
+=
+\begin{bmatrix}
+A 
+\end{bmatrix}^{-1}
+\begin{bmatrix}
+B 
+\end{bmatrix}
+\begin{Bmatrix}
+\delta
+\end{Bmatrix}
+\end{equation}
 
-
+\subsubsection{Stabilità del modello}
+Per lo studio della stabiità di marcia del modello è necessario analizzarlo in seguito ad una perturbazione rispetto alla condizione di equilibrio.
+La risposta sarà una combinazione di modi di vibrare.
+Un sistema è stabile quando i tutti suoi modi di vibrare hanno parte reale negativa, basta un singolo modo di vibrare con parte reale positiva e il sistema sarà instabile.\\
+Le radici del polinomio caratteristico sono appunto i modi di vibrare.\\
+Imponendo il $det[SI-A]=0$ troviamo gli autovalori:
+\begin{gather}det
+    \begin{bmatrix}
+    S-\frac{ C_f - C_r}{mu} & \frac{ C_fa - C_rb}{mu} - u\\
+    \frac{ -C_fa + C_rb}{Ju}  & S-\frac{C_f a^2 + C_r b^2}{Ju} 
+    \end{bmatrix} = 0 \\
+    \begin{bmatrix}
+        S^2 - S\frac{C_f a^2 + C_r b^2}{Ju} - S\frac{C_f-C_r}{mu} + \frac{C_f-C_r}{mu}\frac{C_f a^2 + C_r b^2}{Ju}
+    \end{bmatrix}
+    -
+    \begin{bmatrix}
+        \frac{(C_fa-C_rb)^2}{mJu} + \frac{C_fa-C_rb}{J}
+    \end{bmatrix} = 0\\
+    \underbrace{\begin{bmatrix}
+    1
+    \end{bmatrix}}_{a_2}S^2 +
+    \underbrace{\begin{bmatrix}
+    \frac{C_f a^2 - C_r b^2}{Ju} + \frac{C_f+C_r}{mu}
+    \end{bmatrix}}_{a_1} S +
+    \underbrace{\begin{bmatrix}
+    \frac{C_f-C_r}{mu}\frac{C_f a^2 + C_r b^2}{Ju} - \frac{(C_fa-C_rb)^2}{mJu} - \frac{C_fa-C_rb}{J}
+    \end{bmatrix}}_{a_0} = 0
+\end{gather}
+Secondo il criterio di Hurwitz un sistema è stabile quando tutti i coefficienti del polinomio caratteristico hanno lo stesso segno.
+Essendo $a_2$ e $a_1$ positivi, affinche il sistema sia stabile dovrà essere positivo anche $a_0$.
+imponendo questa condizione otteniamo che affinchè il sistema sia stabile
+\begin{equation}
+    \begin{split}
+        u^2 & < -\frac{C_f C_r (a+b)}{C_rb-C_fa} \frac{(a+b)}{m} \\
+            & < -\frac{C_f C_r (a+b)}{mg(C_rb-C_fa)} (a+b)*g \\
+          u & < \sqrt{-\frac{g(a+b)}{\zeta}}
+    \end{split}
+\end{equation}
+Definiamo dunque la velocità critica valida solo per veicoli sovrasterzanti ($\zeta < 0$)
+\begin{equation}
+    u_{cr} = \sqrt{-\frac{g(a+b)}{\zeta}}
+\end{equation}
+Introduciamo ora il gradiente di sottosterzo per il modello lineare:
+\begin{equation}
+    \zeta = \frac{C_rb-C_fa}{C_f C_r (a+b)}*mg
+\end{equation}
+\begin{enumerate}
+    \item Se $C_rb-C_fa < 0$ ($\zeta < 0$) il veicolo si definisce \textbf{sovrasterzante}
+    \item Se $C_rb-C_fa = 0$ ($\zeta < 0$) il veicolo si definisce \textbf{neutro}
+    \item Se $C_rb-C_fa > 0$ ($\zeta > 0$) il veicolo si definisce \textbf{sottosterzante}
+\end{enumerate}
+Ovvero se la capacità direttiva del retrotreno ($C_rb$) è maggiore della capacità direttiva dell'avantreno ($C_fa$) il
+veicolo è detto sottosterzante in quanto il raggio di curvatura che percorre sarà maggiore del raggio di curvatura che 
+dovrebbe percorrere dato dalla combinazione di velocità e angolo di sterzo. 
+Questo argomento verrà trattato approfonditamente nel cap.\ref{cha:cap2}.
 
 \subsection{Double track model}
+Il modello a doppia traccia è l'evoluzione del modello a singola traccia, in questo caso il veicolo viene rappresentato attraverso la sua vista dall'alto con quattro ruote.\\
+Questo modello permette di considerare gli effetti sul comportamento direzionale del trasferimento di carico laterale, della sterzata di Ackermann e toe, del camber e dell'aerodinamica.\\
+Come nel caso precedente la dinamica longitudinale verrà trascurata in quanto non è argomento di tesi.\\
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.4]{Immagini/Lateral dynamics/Double-track-model-of-vehicle-lateral-dynamics.png}
+    \caption{Double track model}
+    \label{fig:Double track model}
+\end{figure}
+Come nel caso precedente possiamo scrivere le equazioni del moto: 
+\begin{align}
+\\
+m(\dot u- rv) & = F_{xrl} + F_{xrr} + F_{xfl} \cos \delta_l + F_{xfr} \cos \delta_r -F_{yfl} \sin \delta_l -F_{yfr} \sin \delta_r\\
+m(\dot v+ ru) & = F_{yrl} + F_{yrr} + F_{yfl} \cos \delta_l + F_{yfr} \cos \delta_r +F_{xfl} \sin \delta_l +F_{xfr} \sin \delta_r\\
+J\dot r & = a*(F_{yfl} \cos \delta_l + F_{yfr} \cos \delta_r +F_{xfl} \sin \delta_l +F_{xfr} \sin \delta_r)-b*(F_{yrl} + F_{yrr})
+\end{align}
+Ipotizzando $F_{xrl}=F_{xrr}$ le coppie differenziali posteriori sono nulle.\\
+Gli angoli di deriva laterali risultano:
+\begin{align}
+\alpha_{fl} & = - (\frac{ra+v}{u+r\frac{Wt_{f}}{2}}) + \delta_f\\
+\alpha_{fr} & = - (\frac{ra+v}{u-r\frac{Wt_{f}}{2}}) + \delta_r\\
+\alpha_{rl} & = - (\frac{-rb+v}{u+r\frac{Wt_{r}}{2}})\\
+\alpha_{rr} & = - (\frac{-rb+v}{u-r\frac{Wt_{r}}{2}})
+\end{align}
+
+
 \subsubsection{Trasferimento di carico laterale}
+Il rollio è la rotazione veicolo attorno all'asse di rollio , è un asse parallelo all'asse longitudinale dello stato individuato dalla retta che unisce i centri di rollio dell'asse anteriore e dell'asse posteriore.\\
+Il rollio avviene nei veicoli dotati di sospensioni durante una curva, a seguito della forza centrifuga generata, questa agendo sulla massa sospesa tende ad inclinarla nel direzione opposta rispetto alla direzione della curva.\\
+La forza peso del veicolo tende ad aumentare nelle ruote esterne e diminuire nelle ruote interne.\\
+\begin{align}
+F_{zfl} & = mg \frac{b}{a+b} + m a_y \frac{h}{Wt_f} D + \frac{Faero_f}{2}\\
+F_{zfr} & = mg \frac{b}{a+b} - m a_y \frac{h}{Wt_f} D + \frac{Faero_f}{2}\\
+F_{zrl} & = mg \frac{a}{a+b} + m a_y \frac{h}{Wt_f} (1-D) + \frac{Faero_r}{2}\\
+F_{zrr} & = mg \frac{a}{a+b} - m a_y \frac{h}{Wt_f} (1-D) + \frac{Faero_r}{2}
+\end{align}
+Definiamo con D il mechanical balance, un parametro che indica come si distribuirà il trasferimento di carico laterale tra assale anteriore e assale posteriore.
+\begin{equation}
+    D = \frac{K_{\phi f}}{K_\phi}\frac{h-d}{h} + \frac{b}{L} \frac{d_f}{h} \label{eq:Mechanical balance}
+\end{equation}
+Come si può vedere dall'eq.\ref{eq:Mechanical balance} questo parametro è funzione di :\\
+$\bullet K_{\phi f}$ è la rigidezza torsionale dell'assale anteriore comprende le varie rigidezze delle sospensioni e delle eventuali barre di torsione presenti\\
+$\bullet K_{\phi}$ è la rigidezza torsionale complessiva del veicolo, è la somma di $K_{\phi f}$ e $K_{\phi r}$.\\
+$\bullet h$ è l'altezza del centro di massa rispetto al piano di appoggio.\\
+$\bullet d_f$ è l'altezza del centro di rollio dell'asse anteriore.\\
+$\bullet h$ è l'altezza del punto formato dall'intersezione tra l'asse di rollio e la retta verticale a distanza $a$ dall'asse anteriore.
+(inserire figura con le quote).
+
 \subsubsection{Ackermann steering}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.4]{Immagini/Lateral dynamics/Angolo-di-Ackermann.jpg}
+    \caption{Sterzata di Ackermann}
+    \label{fig:Ackermann}
+\end{figure}
+
 \subsubsection{Camber}
+L'angolo di camber o "di campanatura" è l'angolo formato tra l'asse verticale passante per il centro dell'impronta di contatto dello pneumatico e l'asse radiale della ruota.
+il camber statico è l'angolo misurato a veicolo fermo mentre il camber dinamico è funzione della cinematica delle sospensioni e dunque del trasferimento di carico.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.4]{Immagini/Lateral dynamics/Camber.jpg}
+    \caption{Angoli di Camber}
+    \label{fig:Camber}
+\end{figure}
+
+
+\subsubsection{Convergenza delle ruote}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=2]{Immagini/Lateral dynamics/Toe-in.png}
+    \caption{Convergenza delle ruote anteriori}
+    \label{fig:Toe-in}
+\end{figure}
+
 \subsubsection{Aerodinamica}
