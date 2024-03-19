@@ -1,9 +1,27 @@
-\chapter{Simulazioni Matlab}
+\chapter{Simulazioni in ambiente Matlab}
 \label{cha:cap3}
-In questo capitolo verranno descritti----------------
+In questo capitolo verrà descritta l'implementazione tramite software matlab dei modelli descritti nel capitolo \ref{cha:cap1}, successivamente verranno esposti attraverso la rappresentazione dei risultati gli effetti sul comportamento direzionale dei parametri descritti nelle sez. \ref{Camber}.
+%--------------------------------------------------------------------------------------------------------------
+\section{Implementazione Steady state system}
 
+\subsection{Single track model}
 
+\subsection{Double track model}
+\subsubsection{Load transfer}
+
+\subsection{Functions}
+
+\subsubsection{MFeval}
+\subsubsection{Ackermann}
+\subsubsection{-----------------------------}
+
+%-----------------------------------------------------------------------------------------------------
 \section{Descrizione Test}
+$\bullet$\textbf{Manovra quasi-stazionaria} : Si osservano condizioni di regime successive, dunque non si considera la variabile tempo; 
+il risultato sono i valori di regime ($v,r$) in funzione di uno o più parametri quali ($\delta,u$).\\
+$\bullet$\textbf{Manovra dinamica} : Il sistema veicolo evolve nel tempo in base alle condizioni iniziali e ai comandi imposti dal guidatore (sterzo e velocità di avanzamento), 
+il risultato sono le funzioni del tempo $v(t),r(t)$ delle variabili di stato.\\
+
 
 \subsection{Rampsteer}
 é una prova che prevede un test con angolo di sterzo crescente partendo da un angolo di sterzo alle ruote di 0 [deg] a 15 [deg].
@@ -16,49 +34,17 @@ Nel mentre si mantiene costante l'angolo di sterzo alle ruote.
 Per ogni test di costant steer si eseguono 4 diverse prove ad angolo di sterzo alle ruote di 5 - 10 - 15 - 20 [deg].
 
 \subsection{Costant radius}
-Questo metodo di prova richiede la guida del veicolo di prova a diverse velocità su un percorso circolare di raggio noto. Il raggio standard del percorso deve essere di 100 m, ma possono essere utilizzati raggi maggiori e minori, con 40 m come valore inferiore raccomandato e 30 m come minimo.
+Questo metodo di prova prevede  veicolo a diverse velocità su un percorso circolare di raggio noto. Il raggio standard del percorso deve essere di 100 m, ma possono essere utilizzati raggi maggiori e minori, con 40 m come valore inferiore raccomandato e 30 m come minimo.
 Le caratteristiche di risposta del controllo direzionale sono determinate dai dati ottenuti durante la guida del veicolo a velocità crescenti sul percorso di raggio costante. Questa procedura può essere condotta in un'area relativamente piccola. La procedura può essere adattata alle strutture esistenti selezionando un cerchio o un percorso di raggio appropriato.
 \\Questa prova può essere svolta in due varianti. Nella prima il veicolo percorre un percorso circolare a velocità discrete e costanti. I dati vengono rilevati quando viene raggiunto lo stato stazionario. Il test può essere eseguito su qualsiasi percorso livellato a raggio costante di lunghezza sufficiente per raggiungere e mantenere lo stato stazionario a raggio costante per almeno un periodo di misurazione di 3 s. Nella seconda, il veicolo rimane sul cerchio con un continuo e lento aumento di velocità, durante il quale vengono rilevati i dati.
 \\Nel nostro caso prevede un test a velocità longitudinale crescente partendo da una velocità di 0 [km/h] a 120 [km/h].
 Nel mentre si mantiene costante il raggio di curvatura.
 L'angolo di sterzo variabile sarà un output del sistema.
 
+\subsection{Equivalenza tra i 3 metodi utilizzati}
+La natura di qualsiasi stato stazionario stabile è indipendente dal metodo con cui viene raggiunto. Pertanto, per ottenere un insieme  di condizioni di equilibrio di velocità, angolo di sterzo e curvatura, è possibile mantenere costante uno di essi, variare il secondo e misurare il terzo.\\ 
+Per definizione di sistema stazionario uno stato di equilibrio non è influenzato dallo stato di equilibrio precedente ed i suoi parametri non dipendono dal tempo. 
+In questo modo tutti i metodi di prova possono essere utilizzati, Questo trova pieno riscontro nelle simulazioni eseguite:\\
 
+\section{Effetto dei parametri caratteristici}
 
-\section{Implementazione Steady state system}
-La fonte di questo argomento è .... mentre ulteriori approfondimenti si trovano in 
-
-\subsection{Single track model}
-
-
-\subsection{Double track model}
-
-\subsubsection{Load transfer}
-
-\subsection{----------------------------}
-
-
-\section{Implementazione Ordinary Differential Equations}
-
-\subsection{Single track model}
-
-
-
-\subsection{Double track model}
-
-
-
-\subsection{-----------------------------}
-
-
-
-
-\section{Functions}
-
-Il programma.............................
-
-\subsection{MFeval}
-
-\subsection{Ackermann}
-
-\subsection{-----------------------------}

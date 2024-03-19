@@ -248,7 +248,7 @@ La fig. \ref{fig:Pressure effects} mostra come al diminuire della pressione di g
 La fig. \ref{fig:Comparison MF-Tire version} mostra un confronto tra la media degli errori di fitting.\\  
 Le fig. \ref{fig:Pressure effects} e \ref{fig:Comparison MF-Tire version} sono prese da \cite{Besselink2010AnIM}.\\
 
-\section{Dinamica Laterale}
+\section{Dinamica Laterale} \label{Dinamica laterale}
 In questo capitolo verranno descritte le basi della dinamica del veicolo per quanto concerne la dinamica laterale.\\
 Il comportamento dinamico di un veicolo può essere suddiviso in: longitudinale (trazione
 e frenata), laterale (handling) e verticale (comfort).
@@ -390,7 +390,7 @@ Introducendo la notazione matriciale il sistema \ref{eq:eom lateral linear} \ref
 \begin{Bmatrix}
 v\\
 r
-\end{Bmatrix}
+\end{Bmatrix}+
 \underbrace{\begin{bmatrix}
 \frac{C_f}{m}\\
 \frac{aC_f}{J} 
@@ -486,13 +486,13 @@ Come nel caso precedente la dinamica longitudinale verrà trascurata in quanto n
 \end{figure}
 Come nel caso precedente possiamo scrivere le equazioni del moto: 
 \begin{align}
-\\
+\nonumber\\
 m(\dot u- rv) & = F_{xrl} + F_{xrr} + F_{xfl} \cos \delta_l + F_{xfr} \cos \delta_r -F_{yfl} \sin \delta_l -F_{yfr} \sin \delta_r\\
 m(\dot v+ ru) & = F_{yrl} + F_{yrr} + F_{yfl} \cos \delta_l + F_{yfr} \cos \delta_r +F_{xfl} \sin \delta_l +F_{xfr} \sin \delta_r\\
 J\dot r & = a*(F_{yfl} \cos \delta_l + F_{yfr} \cos \delta_r +F_{xfl} \sin \delta_l +F_{xfr} \sin \delta_r)-b*(F_{yrl} + F_{yrr})
 \end{align}
 Ipotizzando $F_{xrl}=F_{xrr}$ le coppie differenziali posteriori sono nulle.\\
-Gli angoli di deriva laterali risultano:
+Gli angoli di deriva laterali risultano:\\
 \begin{align}
 \alpha_{fl} & = - (\frac{ra+v}{u+r\frac{Wt_{f}}{2}}) + \delta_f\\
 \alpha_{fr} & = - (\frac{ra+v}{u-r\frac{Wt_{f}}{2}}) + \delta_r\\
@@ -501,8 +501,11 @@ Gli angoli di deriva laterali risultano:
 \end{align}
 
 
-\subsubsection{Trasferimento di carico laterale}
-Il rollio è la rotazione veicolo attorno all'asse di rollio , è un asse parallelo all'asse longitudinale dello stato individuato dalla retta che unisce i centri di rollio dell'asse anteriore e dell'asse posteriore.\\
+\subsubsection{Trasferimento di carico laterale} \label{Trasferimento di carico laterale}
+Per capire come i carichi verticali si ripartiscano durante una curva, si schematizza il veicolo come composto da tre corpi rigidi : massa sospesa, assale anteriore e assale posteriore.\\
+La massa sospesa è vincolata a ciascun assale mediante una coppia rotoidale e le due coppie hanno asse coincidente, detto asse di rollio: 
+è un asse parallelo all'asse longitudinale del veicolo individuato dalla retta che unisce i centri di rollio dell'asse anteriore e dell'asse posteriore.\\
+La rotazione del veicolo attorno a quest'asse viene chiamata "rollio".\\
 Il rollio avviene nei veicoli dotati di sospensioni durante una curva, a seguito della forza centrifuga generata, questa agendo sulla massa sospesa tende ad inclinarla nel direzione opposta rispetto alla direzione della curva.\\
 La forza peso del veicolo tende ad aumentare nelle ruote esterne e diminuire nelle ruote interne.\\
 \begin{align}
@@ -521,20 +524,42 @@ $\bullet K_{\phi}$ è la rigidezza torsionale complessiva del veicolo, è la som
 $\bullet h$ è l'altezza del centro di massa rispetto al piano di appoggio.\\
 $\bullet d_f$ è l'altezza del centro di rollio dell'asse anteriore.\\
 $\bullet h$ è l'altezza del punto formato dall'intersezione tra l'asse di rollio e la retta verticale a distanza $a$ dall'asse anteriore.
-(inserire figura con le quote).
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.8]{Immagini/Lateral dynamics/Car roll 2.png}
+    \caption{Vista laterale e frontale dello schema di veicolo}
+    \label{fig:rollio}
+\end{figure}
 
-\subsubsection{Ackermann steering}
 
+\subsubsection{Ackermann} \label{Ackermann}
+Si definisce sterzata cinematica il moto di un veicolo lungo una traiettoria curva determinata dal puro rotolamento delle ruote.\\
+In queste condizioni il centro di istantanea
+rotazione O di tutte le ruote coincide: tale punto è anche il centro di curvatura 
+dell’intero veicolo \ref{fig:Ackermann}.\\
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=0.4]{Immagini/Lateral dynamics/Angolo-di-Ackermann.jpg}
     \caption{Sterzata di Ackermann}
     \label{fig:Ackermann}
 \end{figure}
+Affinchè il cir di tutte e 4 le ruote coincida, i due angoli di sterzo non possono essere uguali:
+Le relazioni geometriche che descrivono le differenze tra i due angoli $\delta_{in}$ e $\delta_{out}$ possono essere facilmente ricavate dalla fig.\ref{fig:Ackermann}.\\
+\begin{align*}
+\tan(\delta_{in}) = \frac{l}{R-\frac{w_{tr}}{2}} &&  \tan(\delta_{out}) = \frac{l}{R+\frac{w_{tr}}{2}}
+\end{align*}
+Sottraendo le due otteniamo la "Relazione di Ackermann":
+\begin{equation}
+    \cot{(\delta_{out})} - \cot{(\delta_{in})} = \frac{w_{tr}}{l}
+\end{equation}
 
-\subsubsection{Camber}
-L'angolo di camber o "di campanatura" è l'angolo formato tra l'asse verticale passante per il centro dell'impronta di contatto dello pneumatico e l'asse radiale della ruota.
-il camber statico è l'angolo misurato a veicolo fermo mentre il camber dinamico è funzione della cinematica delle sospensioni e dunque del trasferimento di carico.
+
+\subsubsection{Camber} \label{Camber}
+L'angolo di camber o "di campanatura" è l'angolo formato tra l'asse verticale passante per il centro dell'impronta di contatto dello pneumatico e l'asse radiale della ruota.\\
+Se la parte superiore del pneumatico è più vicina alla macchina rispetto alla parte inferiore, il camber si considera negativo e viceversa.
+Quando l'angolo di camber è nullo la superficie di contatto tra pneumatico e terreno sarà maggiore rispetto alle altre due configurazioni.
+Si definisce camber statico è l'angolo misurato a veicolo fermo mentre il camber dinamico è funzione della cinematica delle sospensioni e dunque del trasferimento di carico.\\
+Nelle auto da corsa è comune utilizzare un angolo di camber negativo, in quanto esso produce una forza laterale che migliora la tenuta in ingresso curva.
 
 \begin{figure}[ht]
     \centering
@@ -544,13 +569,28 @@ il camber statico è l'angolo misurato a veicolo fermo mentre il camber dinamico
 \end{figure}
 
 
-\subsubsection{Convergenza delle ruote}
-
+\subsubsection{Convergenza delle ruote} \label{Toe}
+La convergenza delle gomme, chiamata anche "toe angle" è l'angolo che ogni rutoa forma con l'asse longitudinale del veicolo.\\
+Quando l'angolo di toe è nullo le ruote sono parallele e puntano nella stessa direzione dell'asse longitudinale del veicolo.\\
 \begin{figure}[ht]
     \centering
     \includegraphics[scale=2]{Immagini/Lateral dynamics/Toe-in.png}
     \caption{Convergenza delle ruote anteriori}
     \label{fig:Toe-in}
 \end{figure}
+La convergenza delle gomme ha un forte impatto sulla stabilità del veicolo in rettilineo, sul comportamento in curva, ma anche sul consumo degli pneumatici e sulla loro temperatura di esercizio.\\ 
+Utilizzando valori di convergenza positivi (toe-in), la vettura risulterà molto più stabile durante l'inserimento di curva aumentando il fenomeno del sottosterzo riducendo però la capacità direzionale dell'anteriore. \\
+Al posteriore, il toe-in, favorisce una maggiore stabilità generale.\\
+Viceversa, utilizzando “toe out” si avrà una vettura molto responsiva in fase di ingresso curva, ma meno stabile: all'aumentare del toe-out aumenterà il fenomeno del sovrasterzo.
 
 \subsubsection{Aerodinamica}
+I veicoli oltre a scambiare forze con il manto stradale tramite i pneumatici, interagiscono con l'aria, è importante capire come le forze aerodinamiche che nascono durante il moto influenzino il comportamento direzionale del veicolo.\\
+Le forze aerodinamiche possono essere riassunte in due tipi:\\
+$\bullet$ \textbf{Drag} (Resistenza all'avanzamento) : è la forza orizzontale agente sul centro di pressione che si oppone al moto del veicolo.\\
+$\bullet$ \textbf{Down force} (Deportanza / Portanza) : è la forza verticale che nel caso delle autovetture è opposta al verso della forza peso, mentre nelle vetture da corsa ha lo stesso verso della forza peso ed è di fondamentale importanza per la prestazione in curva delle stesse.\\
+L'efficienza aerodinamica di una vettura da corsa rappresenta appunto la capacità di generare deportanza riducendo al minimo la resistenza all'avanzamento.
+A queste si aggiunge anche una Forza aerodinamica laterale $F_{ay}$.\\
+Com'è noto le forze aerodinamiche dipendono dal quadrato della velocità:\\
+\begin{align*}
+F_{ax} = \frac{1}{2}\rho S C_x u^2 &&  F_{ay} = \frac{1}{2}\rho S C_y u^2 &&  F_{az} = \frac{1}{2}\rho S C_y u^2\\
+\end{align*}

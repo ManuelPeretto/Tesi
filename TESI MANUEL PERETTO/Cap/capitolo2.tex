@@ -1,45 +1,123 @@
 \chapter{Il Gradiente di sottosterzo}
 \label{cha:cap2}
-Il comportamento in curva del veicolo è un fattore critico nel determinare la
-sicurezza e le performance di handling dello stesso.
-Una classica caratteristica del comportamento in curva è il concetto di
-sottosterzo, sovrasterzo o sterzo neutro. Questo concetto è basato dall’interazione 
-tra la velocità e la curvatura durante una curva steady-state.
+Una classica caratteristica del comportamento in curva di un veicolo, è il concetto di
+sottosterzo, sovrasterzo o sterzo neutro (introdotto nella sez.\ref{Dinamica laterale}).\\
+Si può esprimere questo concetto (in modo semplice) basandosi sull’interazione tra la velocità di avanzamento e la curvatura durante la percorrenza di una curva in condizioni stazionarie:\\
 Se all’aumentare della velocità del veicolo cresce la curvatura percorsa allora 
 siamo in condizione di sottosterzo.
 Quando la curvatura rimane invariata all’aumentare della velocità allora siamo in
-condizione di sterzo neutro.
-Il gradiente di sottosterzo è una misura che fornisce una misurazione quantitativa 
-del comportamento del veicolo (sottosterzante, sovrasterzante, neutro).
-Il concetto del gradiente di sottosterzo è stato introdotto per la prima volta da 
-Olley nel 1946.
--Olley definì la linea di sterzo neutro come il punto dove qualsiasi forza esterna applicata non produce alcun momento di imbardata addizionale durante una curva. Il gradiente di sottosterzo sarà la distanza tra il centro di massa e la neutral steer line.
-Sebbene non siano state ricavate espressioni matematiche questo concetto coinvolge le derivate degli angoli di deriva dei pneumatici, che vengono successivamente ampiamente utilizzati come gradiente dell’angolo di deriva del pneumatico.
-
--La sterzata di Ackerman è stata proposta nel 1965, in questo caso il gradiente di sottosterzo è definito come la differenza tra l’ackerman steer angle gradient e lo steer angle gradient.
-
--Pacejka nel 1973 esaminò attentamente il concetto di gradiente di sottosterzo, il comportamento in curva di un veicolo convenzionale è stato esaminato con l’ipotesi di un minimo slip longitudinale del pneumatico e un piccolo angolo di sterzo.
-
-
+condizione di sterzo neutro.\\
+Per lo studio della stabilità direzionale dei veicoli era necessario avere un indicatore intuitivo che descrivesse le differenze tra i casi elencati;\\ 
+Il gradiente di sottosterzo è un parametro chiave utilizzato per quantificare e comprendere questo comportamento.\\
+Questo concetto è stato introdotto per la prima volta da Olley nel 1946 \cite{Olley1946RoadMO}:\\
+-Olley definì la "Linea di sterzo neutro" come il punto dove qualsiasi forza esterna applicata non produce alcun momento d'imbardata addizionale durante una curva ed Il gradiente di sottosterzo sarà dunque la distanza longitudinale tra il centro di massa e la linea di sterzo neutro.
+Sebbene non siano state ricavate espressioni matematiche questo concetto coinvolge le derivate degli angoli di deriva dei pneumatici.\\
+-A seguito dell'introduzione della sterzata cinematica (Ackermann), fù proposta un nuova formulazione definita come la differenza tra l'angolo di sterzo di riferimento e l'angolo di sterzo cinematico : $Ua_y = \delta_{REF} - \delta_A$ \cite{society1965vehicle}.\\
+-Nel 1973 Pacjeka, studiò il concetto di gradiente di sottosterzo, scrivendo l'articolo \cite{doi:10.1080/00423117308968439}, nel quale presentava un metodo approssimato che permetteva di
+creare un diagramma (handling diagram) utile per analizzare la stabilità in curva di un veicolo 
+stradale in condizioni stazionarie.\\
+Nella seconda parte dell'articolo \cite{doi:10.1080/00423117308968440} dimostrò, utilizzando il modello a singola traccia linearizzato ed esaminandone i poli, come il sottosterzo garantisca la stabilità in curva in condizioni stazionarie.\\
+-Nel 1996 tramite lo standard SAE \cite{J266_201811}, si definirono le procedure per i test di controllo direzionale dei veicoli stradali, in modo da considerare le varie possibili condizioni di prova. \\
+Furono apportate,inoltre, delle migliorie nella formulazione basata sulla sterzata cinematica, aggiungendo la possibilità di includere lo sterzo posteriore, in questo caso l'angolo di riferimento è dato dalla differenza tra l'angolo di sterzo anteriore e posteriore.\\
+-Recentemente Guiggiani formulò delle perplessità riguardanti le definizioni del gradiente di sottosterzo esistenti, sostenendo che fossero chiaramente definite per veicoli a 4 o più ruote.\\
+In un primo momento propose un miglioramento del $K_{SAE}$ per renderlo indipendente dal passo dei veicoli.
+Successivamente propose un nuovo approccio all'handling che analizzeremo in seguito.
 
 \section{Formulazioni classiche del gradiente di sottosterzo}
-Le tre formulazioni maggiormente utilizzate sono:  KPacejka , KSAE , KGuiggiani.
-La fonte di questo argomento è ..., mentre ulteriori approfondimenti si trovano in 
-\subsection{Formulazione Pacejka}
+Le tre formulazioni maggiormente utilizzate sono: $K_{Pacejka}$ , $K_{SAE}$ , $K_{Guiggiani}$.
+\subsection{Formulazione di Pacejka}
 
-\subsection{Formulazione Sae}
+\subsection{Formulazione SAE}
 
-\subsection{Formulazione Guiggiani}
+\subsection{Formulazione di Guiggiani}
 
 \subsection{Confronto e limiti delle formulazioni classiche}
 Non sono ben definiti nei punti di flesso ecc ecc
 
 \section{Formulazioni alternative del gradiente di sottosterzo}
-aggiungere formulazione di Bucchi.
+\subsubsection{Bucchi e Frendo}
 
+Le formulazioni classiche concentrano l'attenzione sul controllo dell'imbardata del veicolo utilizzando modelli fortemente semplificati sia per i pneumatici che per la dinamica del veicolo.\\
+La nuova formulazione proposta nell'articolo \cite{doi:10.1080/00423114.2016.1167225} mette in relazione  il gradiente di sottosterzo alla coppia d'imbardata, a partire da manovre quasi stazionarie facilmente eseguibili su veicoli reali.\\
+Questa formulazione si basa sulla conoscenza della derivata (rispetto al tempo) della curvatura e del momento d'imbardata generato dalle forze dei pneumatici.\\
+
+(Partiamo dalle mappe di Guiggiani)
+Poiché è dispendioso ottenere le mappe per tutte le combinazioni di $\Tilde{a_y}$ e $\delta_W$, si considerano manovre a velocità costante ($\dot{u} = 0$) e ($\dot{\delta_W} =$ costante) per ottenere informazioni sul comportamento dinamico del veicolo considerato. Queste manovre possono essere considerate rappresentative (con buona approssimazione ) delle comuni azioni di guida.\\
+A partire dalla mappa $\rho_p(\Tilde{a_y}, \delta_W)$, si può scriverne il differenziale:
+\begin{equation}
+   d\rho_p = \frac{\partial \rho_p}{\partial \Tilde{a_y}} d\Tilde{a_y} + \frac{\partial \rho_p}{\partial \delta_W} d\delta_W 
+\end{equation}
+Se $\delta_W(t)$ varia lentamente e $u = \text{costante}$ allora: \quad $\rho \approx \rho_p$ \quad e \quad  $a_y = \dot{\beta}u + \rho u^2 - \tilde{a}_y$.\\ 
+In questo caso, le "steady-state map" ($\beta_p$ , $\rho_p$) possono comunque essere utilizzate per valutare la derivata della curvatura $\dot{\rho}$ a partire dal differenziale $d\rho_p$ come segue:
+\begin{equation} \label{17}
+\dot{\rho} \cong \frac{\partial \rho}{\partial \tilde{a}_y} \dot{a}_y + \frac{\partial \rho}{\partial \delta_w} \dot{\delta}_w = - \frac{K}{l}\dot{a}_y + \frac{\tau}{l} \dot{\delta}_w
+\end{equation}
+Questa espressione non è generale e può essere considerata corretta solo nelle condizioni in cui la $\dot{\delta_W}$ sia relativamente bassa e $\beta$,$\rho$ possano essere approssimate dalle steady-state maps.\\
+Il termine $\dot{a}_y$ può essere ottenuto a partire dalla definizione di accelerazione laterale per manovre a velocità costante:
+\begin{equation} \label{18}
+    \dot{a}_y = \frac{d(\dot{\beta}u + \rho u^2)}{dt} = \ddot{\beta}u + \dot{\rho}u^2 \cong \dot{\rho}u^2
+\end{equation}
+dove $\dot{u} = 0$   e  $\ddot{\beta}u \approx \dot{\rho}u^2$ (in condizioni di guida standard).\\ 
+Sostituendo l'Eq. \ref{18} nell'Eq. \ref{17}, si ottiene una nuova definizione del gradiente di sottosterzo:
+\begin{equation} \label{19}
+    K \cong \frac{1}{u^2} \left( \frac{\tau \dot{\delta}_w }{\dot{\rho}} - l \right)    
+\end{equation}
+che può essere scritto in modo alternativo come una funzione del momento d'imbardata $N$:
+\begin{equation} \label{20}
+    K \cong \frac{1}{u^2} \left( \frac{\tau \dot{\delta}_wJu}{N} - l \right)
+\end{equation}
+%L'eq. \ref{19} consente di valutare il gradiente di sottosterzo sulla base di $\dot{\delta}_W$ e $\dot{\rho}$, misurabili attraverso un encoder sul volante e due accelerometri in due posizioni diverse del veicolo. \\
+L'efficacia dell'eq.\ref{19}, deriva dal fatto che $K$ possa essere ricavato sperimentalmente eseguendo manovre quasi-stazionarie a velocità costante, misurando facilmente $\dot{\delta}_W$ e $\dot{\rho}$ attraverso un encoder sul volante e due accelerometri in due posizioni diverse del veicolo. \\
+Se la velocità del volante $\dot{\delta}_W$ viene mantenuta costante, il momento d'imbardata è inversamente correlato al gradiente di sottosterzo (\ref{20}):\\ 
+All'aumentare del momento d'imbardata, $K$ diminuisce $\xrightarrow{}$ il veicolo diventa più sovrasterzante.\\
+Nel caso $N = 0$ possono verificarsi tre circostanze:\\ 
+$\bullet$ Se $\dot{\delta}_W = 0$ l'eq. \ref{20} è indeterminata, tuttavia essendo in condizioni stazionarie possiamo calcolare il gradiente di sottosterzo con la formulazione classica.\\
+$\bullet$ Se $\dot{\delta}_W \neq 0$, $K$ tende all'infinito, significa che la curvatura non varia nonostante la velocità di rotazione del volante sia diversa da zero.\\
+In particolare,
+se $\dot{\delta}_W > 0$ si verifica il sottosterzo poiché la velocità d'imbardata del veicolo non aumenta anche se il conducente sta aumentando l'angolo di sterzo.\\ 
+Al contrario, se $\dot{\delta}_W < 0$ si verifica il sovrasterzo poiché la velocità d'imbardata del veicolo rimane costante anche se il conducente sta controsterzando.\\
+% L'equazione \ref{20} è molto importante poiché apre la possibilità di controllare attivamente la virata del veicolo, 
+attraverso lo sviluppo del torque vectoring, 
+in quanto collega la definizione classica del sottosterzo al momento d'imbardata.
+\section{Nuovo approccio all'handling}
 
 
 \section{Metodi per la misura del sottosterzo}
-\subsection{ISO4138-2021}
+\subsection{ISO-4138-2021}
+La normativa ISO 4138 specifica metodi di test "open loop" per determinare il comportamento direzionale di autovetture stradali (ISO 3833) e di camion leggeri.\\
+Il comportamento direzionale riguarda la dinamica del veicolo in generale e la "tenuta di strada"
+Le manovre "open loop" descritte in seguito non sono rappresentative delle condizioni reali di guida, ma sono comunque molto utili per ottenere misure del comportamento complessivo del veicolo a seguito di diversi tipi di input di controllo e sotto condizioni di prova rigidamente definite.
+I tre metodi definiti dalla normativa \cite{iso4138} sono:
+\begin{enumerate}
+    \item "Costant-speed test method"
+    \item "Costant-steering-wheel angle test method"
+    \item "Costant-radius test method"
+\end{enumerate}
+\subsubsection{Costant-speed test method}
+Questo metodo di prova prevede che il veicolo sia condotto con velocità velocità costante variando l'angolo di sterzo.\\
+Le caratteristiche direzionali sono determinate dai dati ricavati rispetto all'accelerazione laterale ma potrebbe
+richiedere ampie aree di test, a seconda della combinazione di velocità e accelerazione laterale. \\
+La variazione dell'angolo di sterzo dovrebbe essere più accurata possibile per garantire affidabilità dei dati.\\
+La velocità di riferimento della prova è 100 [km/h], ma possono essere eseguite prova a diverse velocità.\\
+Viene comunemente chiamato "rampsteer" (rampa di sterzo).\\
+\subsubsection{Costant-steering-wheel angle test method}
+Questo metodo di prova prevede che il veicolo sia condotto con velocità velocità crescente ed un angolo di sterzo mantenuto fisso.\\ 
+Il raggio percorso sarà funzione della velocità di avanzamento e dell'accelerazione laterale.\\
+Il test può essere eseguito con una serie di prove discrete oppure con una singola prova continua.\\
+Nella prima, l'angolo dello sterzo viene applicato con il veicolo che viaggia a velocità discrete e viene mantenuto fino a quando non si raggiungono condizioni stazionarie.\\ 
+Nella seconda, l'angolo dello sterzo viene mantenuto fisso mentre la velocità aumenta in modo lento e continuo fino al limite di controllo.\\
+L'angolo di sterzo dovrà fornire un raggio percorso a bassa velocità di almeno 30 [m] e minimo 20 [m] valore limite.\\
+Viene comunemente chiamato "rampspeed" (rampa di velocità).
+\subsubsection{Costant-radius test method}
+Questo metodo di prova prevede che il veicolo sia condotto a diverse velocità su un percorso circolare di raggio definito. Il raggio di curvatura di riferimento è solitamente 100 [m], possono essere utilizzati raggi maggiori e minori, Viene raccomandato un valore minimo di 40 [m]. \\
+Le caratteristiche di risposta direzionale sono determinate attraverso i dati ottenuti.\\
+Questa procedura può essere condotta in un'area relativamente piccola risultando adatta alle strutture esistenti nel quale
+possa essere individuata una circonferenza sufficientemente ampia, può essere svolta in due varianti: \\
+-Nella prima il veicolo percorre un percorso circolare a velocità discrete e costanti. 
+I dati vengono rilevati quando viene raggiunto lo stato stazionario. 
+Il test può essere eseguito su qualsiasi percorso livellato a raggio costante di lunghezza sufficiente per raggiungere e 
+mantenere lo stato stazionario a raggio costante per almeno un periodo di misurazione di 3 s.\\
+-Nella seconda, il veicolo rimane sul cerchio con un continuo e lento aumento di velocità, durante il quale vengono
+rilevati i dati. La derivata dell'accelerazione laterale dovrebbe essere di 0,1 [m/s²/s] con un limite massimo di [0,2 m/s²/s].
 
-Come si.......................
+
