@@ -2,16 +2,21 @@
 \label{cha:cap2}
 Una classica caratteristica del comportamento in curva di un veicolo, è il concetto di
 sottosterzo, sovrasterzo o sterzo neutro (introdotto nella sez.\ref{Dinamica laterale}).\\
-Si può esprimere questo concetto (in modo semplice) basandosi sull’interazione tra la velocità di avanzamento e la curvatura durante la percorrenza di una curva in condizioni stazionarie:\\
+Si può esprimere questo concetto (in modo semplice) basandosi sull’interazione tra la velocità di avanzamento e la 
+curvatura durante la percorrenza di una curva in condizioni stazionarie:\\
 Se all’aumentare della velocità del veicolo cresce la curvatura percorsa allora 
 siamo in condizione di sottosterzo.
 Quando la curvatura rimane invariata all’aumentare della velocità allora siamo in
 condizione di sterzo neutro.\\
-Per lo studio della stabilità direzionale dei veicoli era necessario avere un indicatore intuitivo che descrivesse le differenze tra i casi elencati;\\ 
+Per lo studio della stabilità direzionale dei veicoli era necessario avere un indicatore intuitivo che descrivesse le
+differenze tra i casi elencati;\\ 
 Il gradiente di sottosterzo è un parametro chiave utilizzato per quantificare e comprendere questo comportamento.\\
 Questo concetto è stato introdotto per la prima volta da Olley nel 1946 \cite{Olley1946RoadMO}:\\
--Olley definì la "Linea di sterzo neutro" come il punto dove qualsiasi forza esterna applicata non produce alcun momento d'imbardata addizionale durante una curva ed Il gradiente di sottosterzo sarà dunque la distanza longitudinale tra il centro di massa e la linea di sterzo neutro.
-Sebbene non siano state ricavate espressioni matematiche questo concetto coinvolge le derivate degli angoli di deriva dei pneumatici.\\
+-Olley definì la "Linea di sterzo neutro" come il punto dove qualsiasi forza esterna applicata non produce alcun momento
+d'imbardata addizionale durante una curva ed Il gradiente di sottosterzo sarà dunque la distanza longitudinale tra il 
+centro di massa e la linea di sterzo neutro.
+Sebbene non siano state ricavate espressioni matematiche questo concetto coinvolge le derivate degli angoli di deriva dei
+pneumatici.\\
 -A seguito dell'introduzione della sterzata cinematica (Ackermann), fù proposta un nuova formulazione definita come la differenza tra l'angolo di sterzo di riferimento e l'angolo di sterzo cinematico : $Ua_y = \delta_{REF} - \delta_A$ \cite{society1965vehicle}.\\
 -Nel 1973 Pacjeka, studiò il concetto di gradiente di sottosterzo, scrivendo l'articolo \cite{doi:10.1080/00423117308968439}, nel quale presentava un metodo approssimato che permetteva di
 creare un diagramma (handling diagram) utile per analizzare la stabilità in curva di un veicolo 
@@ -22,19 +27,240 @@ Furono apportate,inoltre, delle migliorie nella formulazione basata sulla sterza
 -Recentemente Guiggiani formulò delle perplessità riguardanti le definizioni del gradiente di sottosterzo esistenti, sostenendo che fossero chiaramente definite per veicoli a 4 o più ruote.\\
 In un primo momento propose un miglioramento del $K_{SAE}$ per renderlo indipendente dal passo dei veicoli.
 Successivamente propose un nuovo approccio all'handling che analizzeremo in seguito.
-
+%-------------------------------------------------------------------------------------------------------
 \section{Formulazioni classiche del gradiente di sottosterzo}
 Le tre formulazioni maggiormente utilizzate sono: $K_{Pacejka}$ , $K_{SAE}$ , $K_{Guiggiani}$.
 \subsection{Formulazione di Pacejka}
+Pacejka introdusse il concetto di gradiente di sottosterzo per veicoli a trazione anteriore (FWD), inizialmente concentrando l'attenzione su modelli lineari e successivamente estendendolo a modelli non lineari.\\
+Per pneumatici lineari, le forze sono definite come $F_{yf} = C_f \alpha_f$ e $F_{yr} = C_r \alpha_r$, 
+La relazione tra l'angolo di sterzo anteriore, la curvatura e la velocità può essere scritta omettendo la derivata rispetto
+al tempo:\\
+\begin{equation} \label{7}
+\frac{1}{R} = \frac{ C_f C_r l}{C_f C_r l^2 - mu^2(C_f a - C_rb)} \delta
+\end{equation}
+
+Combinando con $\rho = \frac{r}{v_x} = \frac{1}{R}$, si ottiene:
+\begin{equation} \label{8}
+\delta_f = \frac{1}{R} (l - mu^2\frac{C_f a - C_r b}{l C_f C_r})
+\end{equation}
+il Gradiente di sottosterzo è definito con $\eta$:
+\begin{equation}
+    K_{Pacejka} = \eta = -\frac{mg}{l} \frac{C_fa-C_rb}{C_fC_r} = -\frac{s}{l} \frac{mgC}{C_fC_r}
+\end{equation}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.7]{Immagini/Understeer Gradient/Pacjeka understeer gradient.jpg}
+    \label{fig:Pacjeka understeer gradient}
+    \caption{Il gradiente di sottosterzo secondo la formulazione di Pacjeka}
+\end{figure}
+L'equazione \ref{7} scritta per il modello lineare può essere riscritta:\\
+\begin{equation}
+\delta_f = \frac{l}{R}( 1 + \eta\frac{u^2}{gl} ) = \frac{l}{R} + \eta \frac{a_y}{g}
+\end{equation}
+In condizioni non lineari, il gradiente di sottosterzo deriva dalla geometria (sterzata cinematica, Ackermann):\\
+\begin{equation}
+\frac{d\delta_f}{da_y} = \frac{d(\alpha_f - \alpha_r)}{da_y}
+\end{equation}
+Si può ricondurre la formulazione al $K_0$:
+\begin{equation}
+K_{Pacejka} = \frac{d(\alpha_f - \alpha_r)}{d(a_y/g)} = -\frac{g}{l} K_0
+\end{equation}
+
+\subsubsection{Handling Diagram}
+Per migliorare la comprensione del comportamento direzionale in condizioni non lineari, Pacjeka nel suo libro
+\cite{pacejka2005tire} introdusse un metodo grafico per visualizzare intuitivamente la risposta del veicolo.
+Tale metodo è basato sugli angoli di deriva dei pneumatici.
 
 \subsection{Formulazione SAE}
 
+La formulazione SAE è anch'essa basata sulla geometria della sterzata di Ackermann, considera veicoli a 4 ruote sterzanti,
+definendo:\\
+Angolo di sterzo di Ackermann (cinematico) come $\delta_A = \frac{L}{R}$.\\ 
+Angolo di sterzo di riferimento come $\delta_{\text{ref}} = -\delta_f + \delta_r$.\\
+Il gradiente di sottosterzo è infine definito come la differenza tra loro derivate:
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.7]{Immagini/Understeer Gradient/Ackermann geometry.jpg}
+    \caption{Angolo di sterzo cinematico}
+    \label{fig:Delta ref}
+\end{figure}
+\begin{equation}
+K_{SAE} = \frac{d\delta_{ref}}{da_y} - \frac{d\delta_A}{da_y} = \frac{d(-\alpha_f + \alpha_r)}{da_y}
+\end{equation}
+Potrebbe essere riportato al $K_0$ come segue:
+\begin{equation}
+K_{SAE} = l \cdot \frac{\partial \rho}{\partial a_y} = l \cdot K_0
+\end{equation}
+
+
+
 \subsection{Formulazione di Guiggiani}
+Nel primo libro \cite{guiggiani2007dinamica} propose una formulazione in accordo con la definizione SAE \cite{J266_201811}:\\
+\begin{equation}
+    K_{\gamma} = \frac{d}{d\Tilde{a}_y} (\delta - \frac{l}{R}) = \frac{d}{d\Tilde{a}_y} (\alpha_{1p} - \alpha_{2p}) = \frac{d}{d\Tilde{a}_y} (\gamma_0 - \gamma_p)
+\end{equation}
+Che nel caso del modello lineare diventava:\\
+\begin{equation}
+    K_{\gamma} = \frac{m}{l}( \frac{\Phi_2 a_2 - \Phi_1 a_1}{\Phi_1 \Phi_2})
+\end{equation}
+Nella seconda edizione \cite{guiggiani2018science} criticò aspramente la definizione SAE come vedremo successivamente,
+proponendo una nuova versione che migliorasse la precedente, che è funzione di due variabili:\\
+\begin{equation} \label{roy 1}
+    \rho_y = \rho_y(\delta_{va},\Tilde{a}_y)
+\end{equation}
+eccetto nel caso del modello a singola traccia con differenziale aperto,\\
+allora $\rho_y = \rho_y (\Tilde{a}_y) = - df_{\rho}/d\Tilde{a}_y $ :
+\begin{equation} \label{6.171}
+    \rho_y = \frac{\partial \rho_p}{\partial \tilde{a}_y} = \frac{\partial}{\partial \tilde{a}_y} (\frac{1}{R}) = -\frac{K}{l}
+\end{equation}
+Questa è molto simile alla definizione classica del K ma con delle differenze sostanziali:\\
+\'E definito per qualsiasi in quanto non è influenzato dal passo $l$ dei veicoli e neanche dallo sterzo di Ackermann.\\
+Naturalmente, la derivata parziale nell'eq.\ref{6.171} richiede che l'angolo di sterzo sia mantenuto costante.
+Nel caso di un test ad angolo volante fissato l'eq.\ref{6.171} può essere riscritta come:\\
+\begin{equation}
+    \frac{d\rho_p}{d\tilde{a}_y} = \frac{d(r_p/u_a)}{d(r_pu_a)} = \frac{d(r_p/u_a)}{du_a} (\frac{d(r_pu_a)}{du_a})^{-1} = \frac{1}{u_a^2} (\frac{\dot r_pu_a - r_p}{\dot r_pu_a + r_p}) = \rho_y
+\end{equation}
+
 
 \subsection{Confronto e limiti delle formulazioni classiche}
-Non sono ben definiti nei punti di flesso ecc ecc
 
+\subsubsection{Confronto}
+Le tre formulazioni analizzate sono sostanzialmente equivalenti a $K_0$, condividendo la derivata 
+dell'accelerazione laterale al denominatore.\\
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.5]{Immagini/Understeer Gradient/Kpacejka.png}
+    \caption{}
+    \label{fig:Kpacejka}
+\end{figure}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.5]{Immagini/Understeer Gradient/Ksae.png}
+    \caption{}
+    \label{fig:Ksae}
+\end{figure}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.25]{Immagini/Understeer Gradient/Kguiggiani.jpg}
+    \caption{}
+    \label{fig:Kguiggiani}
+\end{figure}
+
+\subsubsection{Limiti}
+Tutte e tre le formulazioni classiche condividono la derivata dell'accelerazione laterale al denominatore, 
+questo genera una scarsa definizione nei punti di flesso.\\
+Se si considerano angoli di sterzo costanti su entrambi gli assi, la derivata parziale può essere sostituita dal 
+differenziale dunque $\frac{\partial \rho}{\partial a_y} \longrightarrow{} \frac{d \rho}{da_y}$. Essendo in condizioni
+stazionarie, abbiamo $\rho = \frac{r}{u}$ e $a_y = r \cdot u$. Quindi, $K_0$ diventa:
+\begin{equation}
+K_0 = 
+\frac{d \rho}{da_y} = \frac{d \left( \frac{r}{u} \right)}{d(ru)} = \frac{\frac{d(\frac{r}{u})}{du}}{\frac{dru}{du}} =
+\frac{\frac{dr}{du} - \frac{r}{u}}{u^2( \frac{dr}{du} + \frac{r}{u})} =
+\frac{\frac{d \rho}{du}}{u( \frac{dr}{du} + \frac{r}{u})}
+\end{equation}
+Il suo numeratore rappresenta esattamente il concetto di gradiente di sottosterzo, il cui segno indica la tendenza
+sottosterzante, sovrasterzante o neutro.
+$K_0$ descrive correttamente questa caratteristica finchè il segno del denominatore è costante. \\
+Tuttavia, non è sempre costante:\\
+A bassa velocità, la velocità d'imbardata ($r$) aumenta all'aumentare dell'accelerazione, $\frac{dr}{dv}$ risulta
+positivo, essendo il denominatore positivo. \\
+Man mano che la velocità d'imbardata si avvicina al suo limite massimo correlato al limite di accelerazione laterale,
+questa inizia a diminuire, $\frac{dr}{du}$ diventa negativo (fig.\ref{fig:r vs u delta=0.145}).\\ 
+Di conseguenza, il denominatore potrebbe diventare zero o negativo. Questo cambiamento nel segno del denominatore
+interrompe la connessione tra $K_0$ e la caratteristica di sottosterzo. Inoltre, un denominatore intorno a zero causerebbe
+instabilità numerica (fig.\ref{fig:K0 delta=0.145}).\\
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.7]{Immagini/Understeer Gradient/r vs u.png}
+    \caption{velocità d'imbardata e velocità}
+    \label{fig:r vs u delta=0.145}
+\end{figure}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.5]{Immagini/Understeer Gradient/K0.jpg}
+    \caption{$K_0$}
+    \label{fig:K0 delta=0.145}
+\end{figure}
+L'esempio mostrato nelle fig.\ref{fig:r vs u delta=0.145} e \ref{fig:K0 delta=0.145} rappresenta la velocità d'imbardata in
+regime stazionario di un veicolo a trazione anteriore e pneumatici non lineari (rimandare ad appendice dove si spiega il
+modello) che esegue una manovra ad angolo di sterzo fissato $\delta_f = 0.145$ e velocità crescente da 0 a 40 [m/s].\\
+In particolare la fig.\ref{fig:r vs u delta=0.145} rappresenta la velocità d'imbardata al variare della velocità di avanzamento e le linee grigie rappresentano la curvatura.
+La curvatura diminuisce per velocità superiori a 15 [m/s], indicando sottosterzo.\\ 
+Il denominatore presenta il termine $\frac{dr}{du} + \frac{r}{u}$, quando $u$ è bassa, sono quasi costanti, indicando
+sterzo neutro. Man mano che $u$ aumenta, $r$ arriva alla saturazione, causando una diminuzione di entrambi (sottosterzo).\\
+In condizioni di saturazione $\frac{dr}{du}$ cambia di segno portando ad un cambio di segno nel denominatore.\\
+La Fig. \ref{fig:K0 delta=0.145} rappresenta come il $K_0$ presenti un punto di singolarità quando il suò denominatore è 
+prossimo allo zero.\\ 
+
+\subsubsection{Definizione nei punti di flesso}
+La fig.\ref{fig:Sterzo Dinamico} mostra come un veicolo stradale a tendenza sottosterzante con pneumatici non lineari 
+presenti un punto di flesso nel diagramma dell'angolo di sottosterzo, il punto di flesso si verifica nel momento in cui i 
+pneumatici anteriori raggiungono il picco di forza laterale che sono in grado di fornire ($F_y^{max} = \mu \cdot F_z$).
+All'aumentare della richiesta d'accelerazione laterale i pneumatici non sono più i grado di generare le forze richieste
+anzi oltre il picco la forza che riescono a generare è ancora minore.
+La curvatura $\rho$ continua a diminuire (Raggio di curvatura $R = \frac{1}{\rho}$ continua ad aumentare).\\
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.4]{Immagini/Understeer Gradient/Sterzo dinamico cinesi.jpg}
+    \caption{}
+    \label{fig:Sterzo Dinamico}
+\end{figure}
+$d\rho/da_y$ cambia il suo segno oltre il punto di flesso della curva:
+Questo genera un ambiguità teorica per quanto riguarda la definizione di comportamento sovrasterzante o sottosterzante:\\
+Nonostante sia chiaro il fatto che il veicolo nella pratica sia in completo scorrimento dell'assale anteriore
+(completo sottosterzo), qualche ricercatore potrebbe esprimere dubbi sul fatto che oltre il punto di flesso riducendo
+l'angolo di sterzo il veicolo riprenda direzionalità ($R$ diminuisce come nel caso di sovrasterzo).
+
+\subsubsection{Critica di Guiggiani}
+Il calcolo di $K$ necessita sia dell'angolo di sterzata $\delta_{ref}$ sia dell'angolo di sterzata di
+Ackermann $\frac{l}{R}$.\\ 
+Purtroppo, nessuno dei due è chiaramente definito in un veicolo reale. Infatti, sono ben definiti solo nel modello a
+singola traccia. In un veicolo reale, le due ruote anteriori hanno tipicamente angoli di sterzata differenti risulta quindi
+difficile definire con precisione l'angolo di sterzata $\delta_{ref}$.
+Anche l'angolo di sterzata di Ackermann $\frac{l}{R}$ incontra difficoltà quando un veicolo ha tre o più assi, poiché il
+passo $l$ non è più definito chiaramente. Nonostante la maggior parte delle auto dispongono di solo due assi non è corretto basare una teoria su un concetto così debole.\\
+
+
+%-----------------------------------------------------------------------------------------------------------
 \section{Formulazioni alternative del gradiente di sottosterzo}
+\subsubsection{Una nuova formulazione del gradiente di sottosterzo basata sulla velocità}
+In questo sotto paragrafo si vuole descrivere ed analizzare una nuova formulazione proposta in un articolo di ricerca in fase di revisione.
+L'articolo in questione è stato creato dagli autori He Zhen, Guan Yihang ,Zhou Hongliang del "Harbin institute of technology, School of Astronautics" e da Miao Weiwei, Yu zhen del "Chassis Department FAW Group corporation".
+il titolo "A new formulation of the understeer gradient and stability
+margin to analyze vehicle steady-state cornering behaviour".\\
+
+In questo articolo si propone una nuova formulazione che non sia dipendente dall'accelerazione laterale in modo da evitare
+di incorrere nei problemi osservati precedentemente.
+Questa nuova formulazione si propone per essere utilizzata in condizioni critiche (saturazione dei pneumatici) ed è
+definita dalla derivata della curvatura rispetto alla velocità:  $K = \frac{\partial \rho}{\partial u}$ o $K = \frac{d \rho}
+{du}$\\ %con l'ipotesi di angoli di sterzo costanti.\\
+Può essere espressa in funzione della velocità di imbardata:
+\begin{equation} \label{Kcinesi}
+K = \frac{d \rho}{du} = \frac{d(ru)}{du} = \frac{dr}{du} - \frac{ru}{u}
+\end{equation}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[scale=0.6]{Immagini/Understeer Gradient/K_cinesi.jpg}
+    \caption{}
+    \label{fig:K_cinesi}
+\end{figure}
+Questa formulazione funziona in modo simile alle formulazioni precedenti. 
+$K$ positivo indica sovrasterzo, $K$ negativo indica sottosterzo e $K=0$ indica sterzo neutro.\\ 
+Il segno di $K$ è determinato dal numeratore, che è la differenza tra la pendenza tangente $\frac{dr}{du}$ e la pendenza assoluta $\frac{r}{u}$ in ogni punto della curva $r$  $u$.\\ 
+Questa differenza può essere ottenuta intuitivamente dalla curva stessa. La Fig.\ref{fig:K_cinesi} mostra che:\\ 
+-Quando $\frac{dr}{du} > \frac{ru}{u}$ e $K > 0$, la curvatura aumenta, indicando sovrasterzo.\\ 
+-Quando $\frac{dr}{du} < \frac{ru}{u}$ e $K < 0$, la curvatura diminuisce, indicando sottosterzo.\\
+\'E sostanzialmente funzione di $r$ e $u$ e non coinvolge concetti complessi, questo la rende applicabile a diversi tipi
+di veicoli, veicoli a sterzata anteriore tradizionale, veicoli a quattro ruote sterzanti, veicoli a quattro ruote
+indipendenti e persino veicoli con più di quattro ruote.\\ 
+\'E applicabile a prove di "rampspeed" cioè con angolo di sterzo fissato e velocità crescente mentre non è applicabile a
+prove di "rampsteer".
+Questo rappresenta un difetto di questa nuova formulazione.\\
+Inoltre eliminando la dipendenza dall'accelerazione laterale si perde il nesso con la stabilità del veicolo del quale
+abbiamo parlato nel cap.\ref{cha:cap1}, per risolvere questo inconveniente gli autori propongono l'aggiunta di un margine di stabilità, tuttavia questo è pur sempre un limite di questa formulazione.
+
+
 \subsubsection{Bucchi e Frendo}
 
 Le formulazioni classiche concentrano l'attenzione sul controllo dell'imbardata del veicolo utilizzando modelli fortemente semplificati sia per i pneumatici che per la dinamica del veicolo.\\
@@ -81,7 +307,7 @@ attraverso lo sviluppo del torque vectoring,
 in quanto collega la definizione classica del sottosterzo al momento d'imbardata.
 \section{Nuovo approccio all'handling}
 
-
+%----------------------------------------------------------------------------------------------------------------
 \section{Metodi per la misura del sottosterzo}
 \subsection{ISO-4138-2021}
 La normativa ISO 4138 specifica metodi di test "open loop" per determinare il comportamento direzionale di autovetture stradali (ISO 3833) e di camion leggeri.\\
